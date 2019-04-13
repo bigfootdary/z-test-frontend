@@ -59,16 +59,13 @@ body {
 }
 
 .page-top {
-  height: 325px;
+  position: relative;
+  height: 324px;
   background-color: $thunder;
   display: flex;
   align-items: flex-end;
   background-size: cover;
   background-position: center;
-}
-
-.page-top {
-  position: relative;
 
   &:before,
   &:after {
@@ -91,6 +88,8 @@ body {
   > .container {
     position: relative;
     z-index: 2;
+    padding-left: 78px;
+    padding-right: 78px;
   }
 
   &:after {
@@ -253,10 +252,15 @@ body {
 
 @include breakpoint(mobile) {
   .page-top {
-    height: 220px;
+    height: 208px;
 
     &--size-large {
       height: auto;
+    }
+
+    > .container {
+      padding-left: 15px;
+      padding-right: 15px;
     }
   }
 

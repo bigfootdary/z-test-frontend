@@ -175,8 +175,8 @@ var vendorConfig = mergeOptions(baseConfig, {
 		vendor: [
 			'expose-loader?Promise!bluebird',
 			'expose-loader?$!jquery',
-			'velocity-animate/velocity.js',
-			'velocity-animate/velocity.ui.js',
+			// 'velocity-animate/velocity.js',
+			// 'velocity-animate/velocity.ui.js',
 			'jquery-validation/dist/jquery.validate.js'
 		]
 	},
