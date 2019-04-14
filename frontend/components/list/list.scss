@@ -1,0 +1,251 @@
+.list-section {
+  padding-left: 48px;
+  padding-right: 48px;
+
+  @include breakpoint(mobile) {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.search-field {
+  &__wrapper {
+    margin-bottom: 40px;
+
+    @include breakpoint(mobile) {
+      margin: -21px -14px 0;
+      padding: 8px 14px 12px;
+      background-color: #F8F8F8;
+    }
+  }
+
+  &__group {
+    position: relative;
+    background-color: white;
+  }
+
+  &__label {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+  }
+
+  &__icon {
+    @include svg(100%, 100%, "icon_search");
+    width: 16px;
+    height: 16px;
+    font-size: 0;
+  }
+
+  &__input {
+    display: block;
+    width: 412px;
+    padding: 12px 10px 12px 56px;
+    border-bottom: 2px solid #D9D9D6;
+    color: #97999B;
+    font-size: 14px;
+    font-family: "Roboto";
+
+    @include breakpoint(mobile) {
+      width: 100%;
+    }
+
+    &::placeholder {
+      color: #97999B;
+    }
+  }
+}
+
+.list-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -12px;
+
+  @include breakpoint(mobile) {
+    margin: 0;
+  }
+}
+
+.list-block {
+  width: calc(100% / 3);
+  height: 290px;
+  padding: 12px;
+
+  @include breakpoint(tablet) {
+    width: 50%;
+  }
+
+  @include breakpoint(mobile) {
+    height: auto;
+    width: 100%;
+    padding: 0;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: #F8F8F8;
+    height: 100%;
+    padding: 24px 24px 14px;
+
+    @include breakpoint(mobile) {
+      background-color: white;
+      padding-left: 0;
+      padding-right: 0;
+      border-bottom: 1px solid #D9D9D6;
+    }
+  }
+
+  &__top,
+  &__bottom {
+    flex: none;
+  }
+
+  &__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  &__middle {
+    flex: 1 0 auto;
+  }
+
+  &--date {
+    color: white;
+    background: #97999B;
+    border-radius: 2px;
+    font-weight: bold;
+    padding: 2px 7px;
+    font-size: 12px;
+    font-family: "Roboto";
+  }
+
+  &--title {
+    font-size: 24px;
+    text-transform: none;
+    font-family: "Roboto";
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-weight: 400;
+
+    @include breakpoint(mobile) {
+      margin-top: 10px;
+    }
+  }
+
+  &--tag {
+    bottom: 24px;
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 12px;
+    color: #97999B;
+    border: 1px solid #D9D9D6;
+    border-radius: 2px;
+    padding: 1px 6px;
+    margin-right: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+
+    @include breakpoint(mobile) {
+      position: static;
+      margin-top: 24px;
+    }
+  }
+
+  &--main {
+    width: calc(100% / 3 * 2);
+
+    @include breakpoint(tablet) {
+      display: none;
+    }
+
+    .list-block {
+      &__inner {
+        display: block;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        background: url("https://source.unsplash.com/UgidX4V13Gc/900x600");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(360deg, #414141 0%, rgba(59, 205, 251, 0) 100%);
+        }
+      }
+
+      &--title,
+      &--date,
+      &--tag {
+        position: relative;
+        z-index: 10;
+      }
+
+      &--title {
+        color: white;
+        font-size: 32px;
+        line-height: 41px;
+        text-transform: uppercase;
+        margin-top: 10px;
+      }
+
+      &--tag {
+        top: 10px;
+        color: white;
+        text-transform: uppercase;
+        display: inline-block;
+      }
+
+      &__wrapper {
+        position: absolute;
+        bottom: 20px;
+        padding-right: 15%;
+      }
+    }
+  }
+}
+
+.list-view-more-btn {
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 16px;
+  background: linear-gradient(214.99deg, #3BCDFB 38.41%, #D728F4 78.33%), #C4C4C4;
+  color: white;
+  border: 1px solid white;
+  padding: 7px 30px;
+
+  @include breakpoint(mobile) {
+    width: 100%;
+  }
+
+  &--wrapper {
+    margin-top: 20px;
+    min-height: 40px;
+
+    @include breakpoint(mobile) {
+      margin-top: 25px;
+    }
+  }
+}
