@@ -174,9 +174,9 @@ var vendorConfig = mergeOptions(baseConfig, {
 	entry: {
 		vendor: [
 			'expose-loader?Promise!bluebird',
-			'expose-loader?$!jquery',
-			'velocity-animate/velocity.js',
-			'velocity-animate/velocity.ui.js',
+      'expose-loader?$!jquery',
+      // 'velocity-animate/velocity.js',
+			// 'velocity-animate/velocity.ui.js',
 			'jquery-validation/dist/jquery.validate.js'
 		]
 	},
@@ -219,8 +219,8 @@ var mainConfig = mergeOptions(baseConfig, {
 							var lastSlashIndex = module.lastIndexOf('/');
 							var entryName = lastSlashIndex > -1 ? module.slice(lastSlashIndex + 1) : module;
 
-							var filePath = paths.src.components + '/' + module + '/' + entryName + '.js';
-							var customFilePath = paths.src.components + '/' + module + '/' + entryName + '.custom.js';
+							var filePath = (paths.src.components + '/' + module + '/' + entryName + '.js').replace(/\\/g, '/');
+							var customFilePath = (paths.src.components + '/' + module + '/' + entryName + '.custom.js').replace(/\\/g, '/');
 
 							if (fs.existsSync(customFilePath)) {
 								return `require("${customFilePath}");`;

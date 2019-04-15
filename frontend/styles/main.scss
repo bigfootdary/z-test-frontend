@@ -7,13 +7,27 @@
 /*
 	Vars & colors
 */
-@import "vars/**/*";
+@import "vars/_vars.scss";
+@import "vars/colors/_colors.scss";
 
 /*
 	Styles
 */
-@import "vendor/**/*";
-@import "base/**/*";
-@import "ui/**/*";
+// @import "vendor/**/*.*";
+@import "base/_a-mixins.scss";
+@import "base/_a-reset.scss";
+@import "base/_grid.scss";
+@import "base/_main.scss";
+@import "base/_typography.scss";
+@import "base/_utilities.scss";
 
-@import "../temp/**/*";
+@import "ui/_buttons.scss";
+@import "ui/_crumbs.scss";
+@import "ui/_footer.scss";
+@import "ui/_header.scss";
+@import "ui/_links.scss";
+@import "ui/_lists.scss";
+@import "ui/_main.scss";
+
+@import "../temp/_002-list.scss";
+@import "../temp/_003-scheme.scss";

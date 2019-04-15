@@ -16555,17 +16555,15 @@ return jQuery;
 
 /***/ }),
 /* 4 */
-/*!**************************************************************************************************************************************************************************!*\
-  !*** multi expose-loader?Promise!bluebird expose-loader?$!jquery velocity-animate/velocity.js velocity-animate/velocity.ui.js jquery-validation/dist/jquery.validate.js ***!
-  \**************************************************************************************************************************************************************************/
+/*!*************************************************************************************************************!*\
+  !*** multi expose-loader?Promise!bluebird expose-loader?$!jquery jquery-validation/dist/jquery.validate.js ***!
+  \*************************************************************************************************************/
 /*! dynamic exports provided */
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! expose-loader?Promise!bluebird */5);
 __webpack_require__(/*! expose-loader?$!jquery */8);
-(function webpackMissingModule() { throw new Error("Cannot find module \"velocity-animate/velocity.js\""); }());
-(function webpackMissingModule() { throw new Error("Cannot find module \"velocity-animate/velocity.ui.js\""); }());
 module.exports = __webpack_require__(/*! jquery-validation/dist/jquery.validate.js */9);
 
 
