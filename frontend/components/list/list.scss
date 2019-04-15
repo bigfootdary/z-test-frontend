@@ -53,10 +53,16 @@
     display: block;
     width: 412px;
     padding: 12px 10px 12px 56px;
+    // border-top: 2px solid white;
+    // border-left: 2px solid white;
+    // border-right: 2px solid white;
     border-bottom: 2px solid #D9D9D6;
     color: #97999B;
     font-size: 14px;
     font-family: "Roboto";
+    border-radius: 0px !important;
+    -webkit-appearance: none !important;
+    -webkit-border-radius: 0px;
 
     @include breakpoint(mobile) {
       width: 100%;

@@ -6,6 +6,7 @@
 .scheme {
   &__box {
     cursor: pointer;
+    z-index: 9;
   }
 
   &__wrapper {

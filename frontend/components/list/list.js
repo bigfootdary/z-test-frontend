@@ -9,8 +9,11 @@ new Vue({
     news: [],
     articlesShown: 0,
     articlesToShow: 0,
-    searchValue: '',
+    searchValue: "",
     hasError: false,
+    serverFilteredNews: [],
+    errorMessage: 'Ни чего нет :(',
+    formSubmitted: false
   },
   mounted() {
     $.get("https://api.myjson.com/bins/m4a6k", data => {
@@ -30,24 +33,18 @@ new Vue({
     loadMore() {
       this.articlesShown *= 2;
     },
-  },
-  computed: {
-    filteredList() {
-      // $.get('https://api.myjson.com/bins/jsox8', data => {
-      //   console.log(data)
-      // }).fail(err => {
-      //   console.error(err)
-      // })
-      const filteredNews = this.news.filter(n => {
-        return n.title.toLowerCase().indexOf(this.searchValue.toLowerCase()) >= 0;
-      });
-      console.log(filteredNews)
+    onSubmit() {
       if (this.searchValue.length !== 0) {
-        return filteredNews;
+        $.get("https://api.myjson.com/bins/jsox8", data => {
+          const serverFilteredNews = data.news.filter(n => (
+            n.title.toLowerCase().indexOf(this.searchValue.toLowerCase()) >= 0
+          ));
+          this.formSubmitted = true;
+          this.serverFilteredNews = serverFilteredNews;
+        }).fail(err => {
+          this.hasError = true;
+        });
       }
-      else {
-        return filteredNews.slice(0, this.articlesShown);
-      }
-    },
-  }
+    }
+  },
 });

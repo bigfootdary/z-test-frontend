@@ -892,8 +892,11 @@ new _vue2["default"]({
     news: [],
     articlesShown: 0,
     articlesToShow: 0,
-    searchValue: '',
-    hasError: false
+    searchValue: "",
+    hasError: false,
+    serverFilteredNews: [],
+    errorMessage: 'Ни чего нет :(',
+    formSubmitted: false
   },
   mounted: function mounted() {
     var _this = this;
@@ -915,25 +918,20 @@ new _vue2["default"]({
   methods: {
     loadMore: function loadMore() {
       this.articlesShown *= 2;
-    }
-  },
-  computed: {
-    filteredList: function filteredList() {
+    },
+    onSubmit: function onSubmit() {
       var _this2 = this;
 
-      // $.get('https://api.myjson.com/bins/jsox8', data => {
-      //   console.log(data)
-      // }).fail(err => {
-      //   console.error(err)
-      // })
-      var filteredNews = this.news.filter(function (n) {
-        return n.title.toLowerCase().indexOf(_this2.searchValue.toLowerCase()) >= 0;
-      });
-      console.log(filteredNews);
       if (this.searchValue.length !== 0) {
-        return filteredNews;
-      } else {
-        return filteredNews.slice(0, this.articlesShown);
+        $.get("https://api.myjson.com/bins/jsox8", function (data) {
+          var serverFilteredNews = data.news.filter(function (n) {
+            return n.title.toLowerCase().indexOf(_this2.searchValue.toLowerCase()) >= 0;
+          });
+          _this2.formSubmitted = true;
+          _this2.serverFilteredNews = serverFilteredNews;
+        }).fail(function (err) {
+          _this2.hasError = true;
+        });
       }
     }
   }
@@ -13210,17 +13208,12 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 "use strict";
 
 
-console.log("scheme");
-
-$(".scheme__wrapper .scheme__box").click(function () {
-  $(".scheme__popup").hide();
+$(".scheme__wrapper .scheme__box").mouseover(function () {
   $(".scheme__item[data-id=" + $(this).data("id") + "] .scheme__popup").show();
 });
 
-$("body").click(function (e) {
-  if ($(e.target).closest(".scheme__wrapper .scheme__box, .scheme__item").length == 0) {
-    $(".scheme__popup").hide();
-  }
+$(".scheme__wrapper .scheme__item").mouseleave(function () {
+  $(".scheme__item[data-id=" + $(this).data("id") + "] .scheme__popup").hide();
 });
 
 /***/ })

@@ -102,7 +102,7 @@
           <section id="js-list" class="list-section">
 
             <div role="search" class="search-field__wrapper">
-              <form>
+              <form v-on:submit.prevent="onSubmit">
 
                 <div class="search-field">
                   <div class="search-field__group">
@@ -124,8 +124,10 @@
               </form>
             </div>
 
+            <p class="search-results" v-if="formSubmitted && serverFilteredNews.length === 0">{{errorMessage}}</p>
+
             <div class="list-container" v-if="!hasError">
-              <article class="list-block list-block--main" v-show="searchValue.length === 0">
+              <article class="list-block list-block--main" v-if="serverFilteredNews.length === 0">
                 <div class="list-block__inner">
                   <span class="list-block--date">{{firstArticle.date}}</span>
                   <div class="list-block__wrapper">
@@ -139,7 +141,7 @@
                 </div>
               </article>
 
-              <article class="list-block" v-for="article in filteredList">
+              <article class="list-block" v-for="article in news.slice(0, articlesShown)" v-if="serverFilteredNews.length === 0">
                 <div class="list-block__inner">
                   <div class="list-block__top">
                     <span class="list-block--date">{{article.date}}</span>
@@ -157,15 +159,30 @@
                 </div>
               </article>
 
+              <article class="list-block" v-if="serverFilteredNews.length > 0" v-for="article in serverFilteredNews">
+                <div class="list-block__inner">
+                  <div class="list-block__top">
+                    <span class="list-block--date">{{article.date}}</span>
+                  </div>
+                  <div class="list-block__middle">
+                    <h2 class="list-block--title">
+                      {{article.title}}
+                    </h2>
+                  </div>
+                  <div class="list-block__bottom">
+                    <div class="list-block--tag" v-for="(tag, index) in article.tags">
+                      {{tag}}
+                    </div>
+                  </div>
+                </div>
+              </article>
             </div>
 
-            <p class="search-results" v-if="filteredList.length === 0">Ни чего нет :(</p>
-            
             <div class="list-view-more-btn--wrapper">
               <button
                 class="list-view-more-btn"
                 v-on:click="loadMore"
-                v-if="news.length > articlesToShow && articlesShown < news.length && searchValue.length <= 0"
+                v-if="news.length > articlesToShow && articlesShown < news.length"
               >
                 Загрузить еще
               </button>

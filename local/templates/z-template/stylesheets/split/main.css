@@ -4858,6 +4858,9 @@ body.disabled {
   color: #97999B;
   font-size: 14px;
   font-family: "Roboto";
+  border-radius: 0px !important;
+  -webkit-appearance: none !important;
+  -webkit-border-radius: 0px;
 }
 @media only screen and (max-width: 768px) {
   /* line 52, ../../../../frontend/temp/_002-list.scss */
@@ -4865,7 +4868,7 @@ body.disabled {
     width: 100%;
   }
 }
-/* line 65, ../../../../frontend/temp/_002-list.scss */
+/* line 71, ../../../../frontend/temp/_002-list.scss */
 .search-field__input::-webkit-input-placeholder {
   color: #97999B;
 }
@@ -4879,7 +4882,7 @@ body.disabled {
   color: #97999B;
 }
 
-/* line 71, ../../../../frontend/temp/_002-list.scss */
+/* line 77, ../../../../frontend/temp/_002-list.scss */
 .list-container {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4891,13 +4894,13 @@ body.disabled {
   margin: -12px;
 }
 @media only screen and (max-width: 768px) {
-  /* line 71, ../../../../frontend/temp/_002-list.scss */
+  /* line 77, ../../../../frontend/temp/_002-list.scss */
   .list-container {
     margin: 0;
   }
 }
 
-/* line 81, ../../../../frontend/temp/_002-list.scss */
+/* line 87, ../../../../frontend/temp/_002-list.scss */
 .list-block {
   width: -webkit-calc(100% / 3 - 1px);
   width: calc(100% / 3 - 1px);
@@ -4905,20 +4908,20 @@ body.disabled {
   padding: 12px;
 }
 @media only screen and (max-width: 1024px) {
-  /* line 81, ../../../../frontend/temp/_002-list.scss */
+  /* line 87, ../../../../frontend/temp/_002-list.scss */
   .list-block {
     width: 50%;
   }
 }
 @media only screen and (max-width: 768px) {
-  /* line 81, ../../../../frontend/temp/_002-list.scss */
+  /* line 87, ../../../../frontend/temp/_002-list.scss */
   .list-block {
     height: auto;
     width: 100%;
     padding: 0;
   }
 }
-/* line 96, ../../../../frontend/temp/_002-list.scss */
+/* line 102, ../../../../frontend/temp/_002-list.scss */
 .list-block__inner {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4935,7 +4938,7 @@ body.disabled {
   padding: 24px 24px 14px;
 }
 @media only screen and (max-width: 768px) {
-  /* line 96, ../../../../frontend/temp/_002-list.scss */
+  /* line 102, ../../../../frontend/temp/_002-list.scss */
   .list-block__inner {
     background-color: white;
     padding-left: 0;
@@ -4943,14 +4946,14 @@ body.disabled {
     border-bottom: 1px solid #D9D9D6;
   }
 }
-/* line 112, ../../../../frontend/temp/_002-list.scss */
+/* line 118, ../../../../frontend/temp/_002-list.scss */
 .list-block__bottom,.list-block__top {
   -webkit-box-flex: 0;
   -webkit-flex: none;
       -ms-flex: none;
           flex: none;
 }
-/* line 117, ../../../../frontend/temp/_002-list.scss */
+/* line 123, ../../../../frontend/temp/_002-list.scss */
 .list-block__bottom {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4964,14 +4967,14 @@ body.disabled {
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
-/* line 123, ../../../../frontend/temp/_002-list.scss */
+/* line 129, ../../../../frontend/temp/_002-list.scss */
 .list-block__middle {
   -webkit-box-flex: 1;
   -webkit-flex: 1 0 auto;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
 }
-/* line 127, ../../../../frontend/temp/_002-list.scss */
+/* line 133, ../../../../frontend/temp/_002-list.scss */
 .list-block--date {
   color: white;
   background: #97999B;
@@ -4981,7 +4984,7 @@ body.disabled {
   font-size: 12px;
   font-family: "Roboto";
 }
-/* line 137, ../../../../frontend/temp/_002-list.scss */
+/* line 143, ../../../../frontend/temp/_002-list.scss */
 .list-block--title {
   font-size: 24px;
   text-transform: none;
@@ -4991,12 +4994,12 @@ body.disabled {
   font-weight: 400;
 }
 @media only screen and (max-width: 768px) {
-  /* line 137, ../../../../frontend/temp/_002-list.scss */
+  /* line 143, ../../../../frontend/temp/_002-list.scss */
   .list-block--title {
     margin-top: 10px;
   }
 }
-/* line 150, ../../../../frontend/temp/_002-list.scss */
+/* line 156, ../../../../frontend/temp/_002-list.scss */
 .list-block--tag {
   bottom: 24px;
   font-family: "Roboto";
@@ -5014,24 +5017,24 @@ body.disabled {
   margin-bottom: 10px;
 }
 @media only screen and (max-width: 768px) {
-  /* line 150, ../../../../frontend/temp/_002-list.scss */
+  /* line 156, ../../../../frontend/temp/_002-list.scss */
   .list-block--tag {
     position: static;
     margin-top: 24px;
   }
 }
-/* line 171, ../../../../frontend/temp/_002-list.scss */
+/* line 177, ../../../../frontend/temp/_002-list.scss */
 .list-block--main {
   width: -webkit-calc(100% / 3 * 2);
   width: calc(100% / 3 * 2);
 }
 @media only screen and (max-width: 1024px) {
-  /* line 171, ../../../../frontend/temp/_002-list.scss */
+  /* line 177, ../../../../frontend/temp/_002-list.scss */
   .list-block--main {
     display: none;
   }
 }
-/* line 179, ../../../../frontend/temp/_002-list.scss */
+/* line 185, ../../../../frontend/temp/_002-list.scss */
 .list-block--main .list-block__inner {
   display: block;
   padding-top: 30px;
@@ -5041,7 +5044,7 @@ body.disabled {
   background-size: cover;
   background-position: center top;
 }
-/* line 188, ../../../../frontend/temp/_002-list.scss */
+/* line 194, ../../../../frontend/temp/_002-list.scss */
 .list-block--main .list-block__inner::before {
   content: '';
   position: absolute;
@@ -5054,12 +5057,12 @@ body.disabled {
   background: -o-linear-gradient(bottom, #414141 0%, rgba(59, 205, 251, 0) 100%);
   background: linear-gradient(360deg, #414141 0%, rgba(59, 205, 251, 0) 100%);
 }
-/* line 199, ../../../../frontend/temp/_002-list.scss */
+/* line 205, ../../../../frontend/temp/_002-list.scss */
 .list-block--main .list-block--date,.list-block--main .list-block--tag,.list-block--main .list-block--title {
   position: relative;
   z-index: 10;
 }
-/* line 206, ../../../../frontend/temp/_002-list.scss */
+/* line 212, ../../../../frontend/temp/_002-list.scss */
 .list-block--main .list-block--title {
   color: white;
   font-size: 32px;
@@ -5067,21 +5070,21 @@ body.disabled {
   text-transform: uppercase;
   margin-top: 10px;
 }
-/* line 214, ../../../../frontend/temp/_002-list.scss */
+/* line 220, ../../../../frontend/temp/_002-list.scss */
 .list-block--main .list-block--tag {
   top: 10px;
   color: white;
   text-transform: uppercase;
   display: inline-block;
 }
-/* line 221, ../../../../frontend/temp/_002-list.scss */
+/* line 227, ../../../../frontend/temp/_002-list.scss */
 .list-block--main .list-block__wrapper {
   position: absolute;
   bottom: 20px;
   padding-right: 15%;
 }
 
-/* line 230, ../../../../frontend/temp/_002-list.scss */
+/* line 236, ../../../../frontend/temp/_002-list.scss */
 .list-view-more-btn {
   font-family: "Roboto";
   font-weight: bold;
@@ -5094,18 +5097,18 @@ body.disabled {
   padding: 7px 30px;
 }
 @media only screen and (max-width: 768px) {
-  /* line 230, ../../../../frontend/temp/_002-list.scss */
+  /* line 236, ../../../../frontend/temp/_002-list.scss */
   .list-view-more-btn {
     width: 100%;
   }
 }
-/* line 243, ../../../../frontend/temp/_002-list.scss */
+/* line 249, ../../../../frontend/temp/_002-list.scss */
 .list-view-more-btn--wrapper {
   margin-top: 20px;
   min-height: 40px;
 }
 @media only screen and (max-width: 768px) {
-  /* line 243, ../../../../frontend/temp/_002-list.scss */
+  /* line 249, ../../../../frontend/temp/_002-list.scss */
   .list-view-more-btn--wrapper {
     margin-top: 25px;
   }
@@ -5120,8 +5123,9 @@ body.disabled {
 /* line 7, ../../../../frontend/temp/_003-scheme.scss */
 .scheme__box {
   cursor: pointer;
+  z-index: 9;
 }
-/* line 11, ../../../../frontend/temp/_003-scheme.scss */
+/* line 12, ../../../../frontend/temp/_003-scheme.scss */
 .scheme__wrapper {
   position: relative;
   max-width: 548px;
@@ -5130,7 +5134,7 @@ body.disabled {
   margin-right: auto;
   overflow-x: scroll;
 }
-/* line 19, ../../../../frontend/temp/_003-scheme.scss */
+/* line 20, ../../../../frontend/temp/_003-scheme.scss */
 .scheme__wrapper svg {
   position: absolute;
   top: 0px;
@@ -5138,12 +5142,12 @@ body.disabled {
   width: 548px;
   height: 658px;
 }
-/* line 28, ../../../../frontend/temp/_003-scheme.scss */
+/* line 29, ../../../../frontend/temp/_003-scheme.scss */
 .scheme__item {
   position: absolute;
   cursor: pointer;
 }
-/* line 33, ../../../../frontend/temp/_003-scheme.scss */
+/* line 34, ../../../../frontend/temp/_003-scheme.scss */
 .scheme__popup {
   display: none;
   position: absolute;
@@ -5158,7 +5162,7 @@ body.disabled {
   line-height: 24px;
   color: #231F20;
 }
-/* line 46, ../../../../frontend/temp/_003-scheme.scss */
+/* line 47, ../../../../frontend/temp/_003-scheme.scss */
 .scheme__popup::before {
   content: '';
   position: absolute;
