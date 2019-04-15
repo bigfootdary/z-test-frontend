@@ -927,8 +927,9 @@ new _vue2["default"]({
       //   console.error(err)
       // })
       var filteredNews = this.news.filter(function (n) {
-        return n.title.toLowerCase().includes(_this2.searchValue.toLowerCase());
+        return n.title.toLowerCase().indexOf(_this2.searchValue.toLowerCase()) >= 0;
       });
+      console.log(filteredNews);
       if (this.searchValue.length !== 0) {
         return filteredNews;
       } else {
@@ -13209,7 +13210,18 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 "use strict";
 
 
-console.log('scheme');
+console.log("scheme");
+
+$(".scheme__wrapper .scheme__box").click(function () {
+  $(".scheme__popup").hide();
+  $(".scheme__item[data-id=" + $(this).data("id") + "] .scheme__popup").show();
+});
+
+$("body").click(function (e) {
+  if ($(e.target).closest(".scheme__wrapper .scheme__box, .scheme__item").length == 0) {
+    $(".scheme__popup").hide();
+  }
+});
 
 /***/ })
 /******/ ]);

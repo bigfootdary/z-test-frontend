@@ -79,7 +79,7 @@
 }
 
 .list-block {
-  width: calc(100% / 3);
+  width: calc(100% / 3 - 1px);
   height: 290px;
   padding: 12px;
 

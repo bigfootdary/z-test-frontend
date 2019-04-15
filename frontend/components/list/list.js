@@ -39,8 +39,9 @@ new Vue({
       //   console.error(err)
       // })
       const filteredNews = this.news.filter(n => {
-        return n.title.toLowerCase().includes(this.searchValue.toLowerCase());
+        return n.title.toLowerCase().indexOf(this.searchValue.toLowerCase()) >= 0;
       });
+      console.log(filteredNews)
       if (this.searchValue.length !== 0) {
         return filteredNews;
       }

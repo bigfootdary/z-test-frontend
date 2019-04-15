@@ -4899,8 +4899,8 @@ body.disabled {
 
 /* line 81, ../../../../frontend/temp/_002-list.scss */
 .list-block {
-  width: -webkit-calc(100% / 3);
-  width: calc(100% / 3);
+  width: -webkit-calc(100% / 3 - 1px);
+  width: calc(100% / 3 - 1px);
   height: 290px;
   padding: 12px;
 }
@@ -5109,4 +5109,62 @@ body.disabled {
   .list-view-more-btn--wrapper {
     margin-top: 25px;
   }
+}
+
+/* line 1, ../../../../frontend/temp/_003-scheme.scss */
+.wrapper {
+  height: 680px;
+  overflow: hidden;
+}
+
+/* line 7, ../../../../frontend/temp/_003-scheme.scss */
+.scheme__box {
+  cursor: pointer;
+}
+/* line 11, ../../../../frontend/temp/_003-scheme.scss */
+.scheme__wrapper {
+  position: relative;
+  max-width: 548px;
+  height: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: scroll;
+}
+/* line 19, ../../../../frontend/temp/_003-scheme.scss */
+.scheme__wrapper svg {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 548px;
+  height: 658px;
+}
+/* line 28, ../../../../frontend/temp/_003-scheme.scss */
+.scheme__item {
+  position: absolute;
+  cursor: pointer;
+}
+/* line 33, ../../../../frontend/temp/_003-scheme.scss */
+.scheme__popup {
+  display: none;
+  position: absolute;
+  width: 293px;
+  padding: 22px 18px;
+  background: #F8F8F8;
+  -webkit-box-shadow: 0px 4px 12px rgba(35, 31, 32, 0.2);
+          box-shadow: 0px 4px 12px rgba(35, 31, 32, 0.2);
+  z-index: 10;
+  font-family: "Roboto";
+  font-size: 16px;
+  line-height: 24px;
+  color: #231F20;
+}
+/* line 46, ../../../../frontend/temp/_003-scheme.scss */
+.scheme__popup::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  background-color: #D728F4;
 }
