@@ -48,20 +48,31 @@
             </div>
             <main class="content">
                 <div class="container container--wide">
-                  <input type="search" name="search-btn" id="search" placeholder="Поиск" />
-                  <div id="error-popup" style="display: none">Список новостей пуст</div>
-                  <div class="" id="news-list"></div>
-                  <a href="#" type="button" id="btn-forward">Показать ещё</a>
-                  <script id="news-template" type="text/x-handlebars-template"> <!--http://objgen.com/json/models/g5U0-->
-                    {{#each news}}
-                    <h4>{{ this.title }}</h4>
-                    <p>{{{ this.id }}}</p>
-                    <img src="{{this.image}}" alt="" width="100%" height="100px">
-                    <p>{{this.date}}</p>
-                    <p>{{this.tag}}</p>
-                    <p>{{this.url}}</p>
-                    {{/each}}
-                </script>
+                  <div class="search">
+                        <img class="search__icon" src="/frontend/images/svg-icons/icon_search.svg" alt="">
+                        <input class="search__btn" type="search" name="search" placeholder="Поиск" />
+                  </div>
+                  <div class="news">                       
+                    <div id="error-popup" style="display: none">Список новостей пуст</div>
+                    <div class="news__list" id="news-list">
+                        <div class="news__heading hide-me--mobile">
+                                <div class="news__date">27.05.2018</div>
+                                <div class="news__subtitle">В центре внимания</div>
+                                <div class="news__title u-uppercase">Операционные результаты Зебры за 2-ой квартал 2018 года</div>
+                        </div>
+                    </div>
+                    <a href="#" class="news__load-btn" type="button" id="btn-forward">Показать еще</a>
+                    <script id="news-template" type="text/x-handlebars-template">
+                        {{#each news}}
+                        <div class="news__item-container">
+                            <div class="news__item">
+                                <span class="news__item-date">{{this.date}}</span>
+                                <div class="news__item-title">{{ this.title }}</div>
+                                <a class="news__item-tag" href="{{this.url}}">{{this.tags}}</a>
+                            </div>
+                        </div>                                        
+                        {{/each}}
+                    </script>
                 </div>
             </main>
         </div>

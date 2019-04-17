@@ -1208,62 +1208,96 @@ var _handlebars2 = _interopRequireDefault(_handlebars);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-console.log('list inited');
+console.log('list inited'); // был в сборке!)
 
-var createList = function createList(data) {
-  var updateList = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-  if (data.news.length !== 0) {
-    var newsTemplate = (0, _jquery2['default'])('#news-template').html();
-    var template = _handlebars2['default'].compile(newsTemplate);
-    var newsList = template(data);
-    updateList ? (0, _jquery2['default'])('#news-list').html(newsList) : (0, _jquery2['default'])('#news-list').append(newsList);
-  } else {
-    showError();
-  }
-};
+/**
+ * Паттерн модуль для скрытия внутренней логики работы скрипта
+ */
+var newsModule = function () {
+  /**
+   * Вывод содержимого полученных данных в DOM
+   * @param {Object} data
+   * @param {Boolean} updateList 
+   */
+  var createList = function createList(data) {
+    var updateList = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-var showError = function showError() {
-  (0, _jquery2['default'])('#error-popup').show();
-  hideForwardBtn();
-};
-
-var hideForwardBtn = function hideForwardBtn() {
-  return (0, _jquery2['default'])('#btn-forward').hide();
-};
-
-var getData = function getData(url, updateList) {
-  fetch(url).then(function (response) {
-    return response.json();
-  }).then(function (data) {
-    console.log('parsed json', data);
-    var totalPages = data.page.total;
-    var currentPage = data.page.current;
-    if (currentPage !== totalPages) {
-      createList(data, updateList);
-    } else if (currentPage == totalPages) {
-      createList(data, updateList);
-      hideForwardBtn();
+    if (data.news.length !== 0) {
+      var newsTemplate = (0, _jquery2['default'])('#news-template').html();
+      var template = _handlebars2['default'].compile(newsTemplate);
+      var newsList = template(data);
+      updateList ? (0, _jquery2['default'])('#news-list').html(newsList) : (0, _jquery2['default'])('#news-list').append(newsList);
+      // $('.news__item:first-child').css('margin-right', '0');
+    } else {
+      showError();
     }
-  })['catch'](function (err) {
-    throw new Error('Ошибка при загрузке данных', err);
-  });
-};
+  };
 
+  /**
+   * Вывод ошибки при остуствии данных в массиве
+   */
+  var showError = function showError() {
+    (0, _jquery2['default'])('#error-popup').show();
+    hideForwardBtn();
+  };
+
+  /**
+   * Скрытие кноки показа слдующей порции новостей по их окончанию
+   */
+  var hideForwardBtn = function hideForwardBtn() {
+    return (0, _jquery2['default'])('#btn-forward').hide();
+  };
+
+  return {
+    /**
+     * Загрузка данных с сервера
+     * @param {String} url 
+     * @param {Boolean} updateList
+     */
+    getData: function getData(url, updateList) {
+      fetch(url).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        // console.log('parsed json', data);
+        var totalPages = data.page.total;
+        var currentPage = data.page.current;
+        if (currentPage !== totalPages) {
+          createList(data, updateList);
+        } else if (currentPage == totalPages) {
+          createList(data, updateList);
+          hideForwardBtn();
+        }
+      })['catch'](function (err) {
+        throw new Error('Ошибка при загрузке данных', err);
+      });
+    }
+  };
+}();
+
+/**
+ * При зазгрузке DOM
+ */
 (0, _jquery2['default'])('document').ready(function () {
   if ((0, _jquery2['default'])('#news-list').length) {
-    getData('https://api.myjson.com/bins/m4a6k');
+    newsModule.getData('https://api.myjson.com/bins/m4a6k');
   }
 });
 
+/**
+ * При клике для примера возвратим последний элемент новостей
+ */
 (0, _jquery2['default'])('#btn-forward').click(function (e) {
   e.preventDefault();
-  getData('https://api.myjson.com/bins/12o4ss');
+  newsModule.getData('https://api.myjson.com/bins/12o4ss');
 });
 
-// Заменить на кроссбраузерное событие
-(0, _jquery2['default'])('#search').on('search', function () {
-  return getData('https://api.myjson.com/bins/jsox8', true);
+/**
+ * При поиске обращаемся к другому url
+ */
+
+(0, _jquery2['default'])('.search__btn').on('change', function () {
+  return newsModule.getData('https://api.myjson.com/bins/jsox8', true);
 });
 
 /***/ }),
@@ -16902,6 +16936,24 @@ PrintVisitor.prototype.HashPair = function (pair) {
 
 
 console.log('scheme');
+
+$('.rect-group').each(function (i, group) {
+    var btn = $(group).find('.rect-btn');
+    var line = $(group).find('.sub-rect');
+
+    btn.mouseenter(function () {
+        line.hide();
+        $(group).css({
+            transform: 'scale(1.2)'
+        });
+    });
+    btn.mouseleave(function () {
+        line.show();
+        $(group).css({
+            transform: 'scale(1)'
+        });
+    });
+});
 
 /***/ })
 /******/ ]);

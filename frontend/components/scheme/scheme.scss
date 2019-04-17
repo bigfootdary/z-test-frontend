@@ -1,0 +1,16 @@
+.scheme-wrapper {
+    margin: 40px auto 0;
+    width: 600px;
+    height: 1000px;
+  }
+  .rect-group {
+    transform-box:  fill-box;
+    transition: 0.5s ease-in-out;
+  }  
+  .rect-btn:hover {
+    cursor: pointer
+  }
+  .sub-rect {
+    transition: 0.5s ease-in-out;
+  }
+ 
