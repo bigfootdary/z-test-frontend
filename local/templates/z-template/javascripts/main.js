@@ -1228,7 +1228,6 @@ var newsModule = function () {
       var template = _handlebars2['default'].compile(newsTemplate);
       var newsList = template(data);
       updateList ? (0, _jquery2['default'])('#news-list').html(newsList) : (0, _jquery2['default'])('#news-list').append(newsList);
-      // $('.news__item:first-child').css('margin-right', '0');
     } else {
       showError();
     }

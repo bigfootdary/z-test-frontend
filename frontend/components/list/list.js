@@ -19,7 +19,6 @@ const newsModule = (function() {
       const template = Handlebars.compile(newsTemplate);
       const newsList = template(data);
       updateList ? $('#news-list').html(newsList) : $('#news-list').append(newsList);
-      // $('.news__item:first-child').css('margin-right', '0');
     } else {
       showError();
     }
