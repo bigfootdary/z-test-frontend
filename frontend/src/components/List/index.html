@@ -1,3 +1,84 @@
-<div>
-    list
-</div>
+<section class="list__section">
+    <div role="search" class="search__field-wrapper">
+        <form>
+            <div class="search__field">
+                <div class="search__field-group">
+                    <label for="search" class="search__field-label">
+                        <span class="visually--hidden">Search</span>
+                        <div class="search__field-icon"></div>
+                    </label>
+                    <input
+                        placeholder="Поиск"
+                        type="search"
+                        id="search"
+                        name="search"
+                        class="search__field-input"
+                        v-model="searchValue"
+                    />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="list__container" v-if="!isError">
+        <article
+            class="list__block list__block-main"
+            v-show="searchValue.length === 0"
+        >
+            <a :href="''+firstArticle.url+''" class="list__block-link">
+                <div class="list__block-inner">
+                    <span class="list__block-date">{{firstArticle.date}}</span>
+                    <div class="list__block-wrapper">
+                        <div class="list__block-tag">
+                            В центре внимания
+                        </div>
+                        <h2 class="list__block-title">
+                            {{firstArticle.title}}
+                        </h2>
+                    </div>
+                </div>
+            </a>
+        </article>
+
+        <article class="list__block" v-for="article in filteredList">
+            <a :href="''+article.url+''" class="list__block-link">
+                <div class="list__block-inner">
+                    <div class="list__block-top">
+                        <span class="list__block-date">{{article.date}}</span>
+                    </div>
+
+                    <div class="list__block-middle">
+                        <h2 class="list__block-title">
+                            {{article.title}}
+                        </h2>
+                    </div>
+
+                    <div class="list__block-bottom">
+                        <div
+                            class="list__block-tag"
+                            v-for="(tag, index) in article.tags"
+                        >
+                            {{tag}}
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </article>
+    </div>
+
+    <p class="search__results" v-if="news !==0 && filteredList.length === 0">
+        Ничего не найдено! Попробуйте другой запрос :)
+    </p>
+    <p class="search__results" v-if="isError">
+        Произошла ошибка, попробуйте позже!
+    </p>
+    <div class="list__view__btn--more-wrapper">
+        <button
+            class="list__view__btn--more"
+            v-on:click="loadMore"
+            v-if="currentPage < totalPages && searchValue.length <= 0"
+        >
+            Загрузить еще
+        </button>
+    </div>
+</section>
