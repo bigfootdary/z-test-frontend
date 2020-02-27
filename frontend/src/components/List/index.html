@@ -1,3 +1,44 @@
-<div>
-    list
+<div class="news">
+  <div class="news-search">
+    <form class="news-search__form">
+      <input type="text" class="news-search__field" @input="inputHandler" placeholder="Поиск">
+    </form>
+  </div>
+  <div class="news__container" v-if="news.length > 0">
+    <div class="news__list">
+      <div class="news__item news-item"
+        v-for="(item, index) in news"
+        :key="`news_${index}`"
+        :class="['news__item', 'news-item', { 'news-item_attention' : item.image }]"
+      >
+        <a :href="item.url" class="news-item__link">
+          <div class="news-item__container" v-if="item.image">
+            <div class="news-item__img" v-if="item.image">
+              <!-- ссылка с картинкой не работает, заменил на placeholder -->
+              <img :src="'https://via.placeholder.com/850x250'" alt="">
+            </div>
+            <div class="news-item__info">
+              <div class="news-item__date">{{ item.date }}</div>
+              <div class="news-item__tag-list">
+                <span class="news-item__tag news-item__tag_attention">В центре внимания</span>
+              </div>
+              <p class="news-item__title">{{ item.title }}</p>
+            </div>
+          </div>
+          <div class="news-item__container" v-else>
+            <div class="news-item__date">{{ item.date }}</div>
+            <p class="news-item__title">{{ item.title }}</p>
+            <div class="news-item__tag-list" v-if="item.tags.length > 0">
+              <span class="news-item__tag" v-for="(tag, index) in item.tags" :key="`tag_${index}`">{{ tag }}</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <button class="news__btn" v-if="currentPage < totalPage" @click="getNews({ action: 'add', page: currentPage + 1 })">
+      Загрузить еще
+    </button>
+  </div>
+
+  <div v-else>По данному запросу ничего не найдено</div>
 </div>

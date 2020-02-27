@@ -22,7 +22,8 @@
 	&-link {
 		color: $oslo-gray;
 		text-decoration: none;
-		font-weight: 500;
+		font-weight: 400;
+		font-family: 'Roboto', sans-serif;
 	}
 
 	&-item {
@@ -58,6 +59,8 @@
 
 		&--fb {
 			@include svg(100%, 100%, 'icon_soc-fb');
+			background-image: url(/local/templates/z-template/static/img/fb.svg);
+
 
 			&:hover {
 				 @include svg-fill(100%, 100%, 'icon_soc-fb', $pomegranate);
@@ -66,6 +69,7 @@
 
 		&--in {
 			@include svg(100%, 100%, 'icon_soc-in');
+			background-image: url(/local/templates/z-template/static/img/in.svg);
 
 			&:hover {
 				@include svg-fill(100%, 100%, 'icon_soc-in', $pomegranate);
@@ -74,10 +78,17 @@
 
 		&--tw {
 			@include svg(100%, 100%, 'icon_soc-twitter');
+			background-image: url(/local/templates/z-template/static/img/twitter.svg);
 
 			&:hover {
 				@include svg-fill(100%, 100%, 'icon_soc-twitter', $pomegranate);
 			}
 		}
+	}
+}
+
+@media (max-width: 1024px) {
+	.footer__social {
+		margin-right: auto;
 	}
 }
