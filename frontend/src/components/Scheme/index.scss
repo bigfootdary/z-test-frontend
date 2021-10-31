@@ -1,0 +1,31 @@
+.container-scheme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.on-hover-scale {
+    &__1 {
+        transform: scale(1.5) translateX(5.8%);
+        transform-origin: 40% .5%;
+    }
+    &__2 {
+        transform: scale(1.5);
+        transform-origin: 22% 17%;
+    }
+    &__3 {
+        transform: scale(1.5);
+        transform-origin: 1.5% 35.3%;
+    }
+    &__4 {
+        transform: scale(1.5);
+        transform-origin: 36% 35.3%;
+    }
+    &__5 {
+        transform: scale(1.5);
+        transform-origin: 70% 35.3%;
+    }
+    &__6 {
+        transform: scale(1.5);
+        transform-origin: 22.5% 84%;
+    }
+}
