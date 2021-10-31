@@ -19,7 +19,6 @@ export default {
                     this.$store.commit('fetchNextPage', data)
                 })
                 .catch((er) => console.log(er))
-                
         },
         filterNews () {
             fetch(

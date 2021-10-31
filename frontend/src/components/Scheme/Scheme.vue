@@ -4,15 +4,15 @@
 export default {
     name: 'scheme',
     methods: {
-        hoverOn(event, num) {
+        hoverOn (event, num) {
             event.target.parentElement.classList.add(`on-hover-scale__${num}`)
             event.target.parentElement.lastChild.style.display = 'none'
         },
-        hoverOff(event, num) {
+        hoverOff (event, num) {
             event.target.parentElement.classList.remove(`on-hover-scale__${num}`)
             event.target.parentElement.lastChild.style.display = 'block'
         },
-        mounted() {}
+        mounted () {}
     }
 }
 </script>
