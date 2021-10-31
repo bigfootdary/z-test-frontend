@@ -19,6 +19,7 @@ export default {
                     this.$store.commit('fetchNextPage', data)
                 })
                 .catch((er) => console.log(er))
+                
         },
         filterNews () {
             fetch(
@@ -39,6 +40,9 @@ export default {
                     this.$store.commit('filterNews', data)
                 })
                 .catch((er) => console.log(er))
+                .finally(() => {
+                    this.filterInput = ''
+                })
         }
     },
     computed: {

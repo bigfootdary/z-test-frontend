@@ -12,6 +12,7 @@
                 type="news-search"
                 class="news-search"
                 placeholder="Поиск"
+                v-model="filterInput"
             />
             <input
                 v-else
@@ -19,6 +20,7 @@
                 type="news-search"
                 class="news-search"
                 placeholder="Название"
+                v-model="filterInput"
             />
         </div>
         <div class="list-container">
