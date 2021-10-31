@@ -39,8 +39,15 @@
 		}
 	}
 }
-
+.copyright {
+	@include breakpoint(tablet) {
+		margin-right: 15px;
+	}
+}
 .footer__social {
+	@include breakpoint(tablet) {
+		margin-left: 15px;
+	}
 	font-size: 0;
 	margin-right: 3rem;
 

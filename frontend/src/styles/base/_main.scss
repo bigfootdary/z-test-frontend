@@ -17,6 +17,7 @@ body {
 	background-color: $white;
 	min-width: $site-min-width;
 	line-height: $base-line-height;
+	
 }
 
 
@@ -92,6 +93,10 @@ pre {
 // Content base style
 //
 .content {
+	@include breakpoint(tablet) {
+		background-color: $alabaster;
+		padding-top: 15px !important;
+    }
 	// * + * { // http://frontender.info/axiomatic-css-and-lobotomized-owls/
 	// 	@include rem(margin-top, $grid-margin);
 	// }

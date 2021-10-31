@@ -1,3 +1,65 @@
 <div>
-    list
+    <div v-if="news.length">
+        <div class="input-container">
+            <img
+                src="../../../static/search-icon.svg"
+                class="input-container__search-logo"
+                alt="search"
+            />
+            <input
+                v-if="device === 'desktop'"
+                @change="filterNews"
+                type="news-search"
+                class="news-search"
+                placeholder="Поиск"
+            />
+            <input
+                v-else
+                @change="filterNews"
+                type="news-search"
+                class="news-search"
+                placeholder="Название"
+            />
+        </div>
+        <div class="list-container">
+            <div
+                v-for="post in news"
+                :key="post.id+Math.random()"
+                class="list-container__item"
+                :class="{'list-container__item--active': post.spotlight && device === 'desktop' }"
+                :style="[post.spotlight && device === 'desktop' && {'background': 'url(' + post.image + ') center no-repeat', backgroundSize: 'cover' }]"
+            >
+                <div
+                    v-if="post.spotlight && device === 'desktop'"
+                    class="list-container__item--overlay"
+                ></div>
+                <div class="list-container__item__date">
+                    {{ new Date(post.date).toLocaleDateString('ru') }}
+                </div>
+                <br />
+                <span
+                    v-if="post.spotlight && device === 'desktop'"
+                    class="list-container__item__action"
+                >
+                    В ЦЕНТРЕ ВНИМАНИЯ
+                </span>
+                <h2 class="list-container__item__title">{{post.title}}</h2>
+                <div class="tag-container">
+                    <div v-for="tag in post.theme" class="tag-container__item">
+                        {{tag}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button
+            v-if="!hideLoadBtn"
+            type="button"
+            @click="loadNextChunk"
+            class="button--primary"
+        >
+            Загрузить еще
+        </button>
+    </div>
+    <p v-else-if="!news.length && emptyInitListFlag">No news to show today</p>
+    <p v-else class="spinner">Loading posts...</p>
 </div>

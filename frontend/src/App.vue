@@ -4,7 +4,7 @@ import 'vue-svgicon/dist/polyfill'
 
 /*
  * Components
-*/
+ */
 import '@/styles/app.scss'
 
 Vue.directive('click-outside', {
@@ -13,7 +13,9 @@ Vue.directive('click-outside', {
         if (typeof binding.value !== 'function') {
             const compName = vNode.context.name
             let warn = `[Vue-click-outside:] provided expression '${binding.expression}' is not a function, but has to be`
-            if (compName) { warn += `Found in component '${compName}'` }
+            if (compName) {
+                warn += `Found in component '${compName}'`
+            }
 
             console.warn(warn)
         }
@@ -49,8 +51,6 @@ Vue.component('vue-raw', {
 
 export default {
     name: 'App',
-    components: {
-
-    }
+    components: {}
 }
 </script>

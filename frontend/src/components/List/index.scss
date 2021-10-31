@@ -1,0 +1,124 @@
+.list-container {
+    @include breakpoint(tablet) {
+        background-color:$alabaster;    
+        gap: 0;
+    }
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $grid-margin;
+    justify-content: flex-start;
+
+    &__item {
+        @include breakpoint(tablet) {
+            border-bottom: 1px solid $quill-gray;
+            margin: 0 15px;
+        }
+        
+        &__action {
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+            border: 1px solid $white;
+            padding: 3px;
+            font-size: 12px;
+            font-weight: 700;
+            margin: 50px 24px 0;
+        }
+
+        &__title {
+            margin: 30px 24px;
+            position: relative;
+            z-index: 2;
+            font-weight: 400;
+        }
+        @include breakpoint(desktop) {
+            width: calc(50% - 12px);
+        }
+        @include breakpoint(tablet) {
+            width: calc(100% - 12px);
+        }
+        position: relative;
+        width: calc(33% - 12px);
+        height: 254px;
+        background-color: $alabaster;
+
+        &__attention {
+            position: relative;
+            z-index: 2;
+            display: inline-block;
+            padding: 4px 5px 2px 4px;
+            color: $white;
+            border: 1px solid $white;
+        }
+        &--active {
+            @include breakpoint(desktop) {
+                width: 100%;
+            }
+            width: 66%;
+            color: $white;
+        }
+        &--overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.8),
+                rgba(59, 205, 251, 0.6),
+                rgba(0, 0, 0, 0.8)
+            );
+        }
+
+        &__date {
+            position: relative;
+            z-index: 2;
+            display: inline-block;
+            color: $white;
+            background-color: $oslo-gray;
+            padding: 2px 6px;
+            margin-top: 24px;
+            margin-left: 24px;
+            border-radius: 2px;
+        }
+    }
+}
+
+.tag-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    bottom: 24px;
+    &__item {
+        position: relative;
+        display: inline-block;
+        padding: 1px 5px;
+        margin-left: 24px;
+        color: $oslo-gray;
+        border: 1px solid $oslo-gray;
+        cursor: pointer;
+        border-radius: 2px;
+    }
+}
+.input-container {
+    @include breakpoint(tablet) {
+        width: calc(100% - 30px);
+        margin: 0 15px 15px;
+        border-bottom: 2px solid $quill-gray;
+        padding: 17px;
+        background-color: white;
+    }
+    position: relative;
+    margin-bottom: 40px;
+    width: 412px;
+    border-bottom: 1px solid $quill-gray;
+    &__search-logo {
+        position: relative;
+        bottom: -3px;
+    }
+    input {
+        width: calc(100% - 45px);
+        margin-left: 15px;
+    }
+}

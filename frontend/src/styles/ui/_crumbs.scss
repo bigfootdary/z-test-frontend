@@ -1,4 +1,7 @@
 .breadcrumbs {
+    @include breakpoint(tablet) {
+        display: none;
+    }
     &__list {
         margin-bottom: 0.9rem;
         display: flex;
