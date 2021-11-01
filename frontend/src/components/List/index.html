@@ -24,6 +24,7 @@
             />
         </div>
         <div class="list-container">
+            <!-- Math.random() вместе с id только из-за дублирующихся новостей с бека, в проде так делать быть не стал -->
             <div
                 v-for="post in news"
                 :key="post.id+Math.random()"
@@ -35,13 +36,17 @@
                     v-if="post.spotlight && device === 'desktop'"
                     class="list-container__item--overlay"
                 ></div>
+                <div
+                    v-if="post.spotlight && device === 'desktop'"
+                    class="list-container__item--overlay--dark"
+                ></div>
                 <div class="list-container__item__date">
                     {{ new Date(post.date).toLocaleDateString('ru') }}
                 </div>
                 <br />
                 <span
                     v-if="post.spotlight && device === 'desktop'"
-                    class="list-container__item__action"
+                    class="list-container__item__spotlight"
                 >
                     В ЦЕНТРЕ ВНИМАНИЯ
                 </span>

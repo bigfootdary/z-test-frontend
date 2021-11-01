@@ -1,6 +1,8 @@
 <template src="./index.html"></template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
     name: 'list',
     data () {
@@ -45,32 +47,13 @@ export default {
         }
     },
     computed: {
-        device () {
-            return this.$store.state.app.device
-        },
-        news: {
-            get () {
-                return this.$store.state.news
-            }
-        },
-        totalPage: {
-            get () {
-                return this.$store.state.totalPage
-            }
-        },
-        currentPage: {
-            get () {
-                return this.$store.state.currentPage
-            }
-        },
-        hideLoadBtn: {
-            get () {
-                return (
-                    this.$store.state.currentPage ===
-                    this.$store.state.totalPage
-                )
-            }
-        }
+        ...mapGetters([
+            'device',
+            'news',
+            'totalPage',
+            'currrentPage',
+            'hideLoadBtn'
+        ])
     },
     mounted () {
         fetch('https://my-json-server.typicode.com/bigfootdary/json-news/news')

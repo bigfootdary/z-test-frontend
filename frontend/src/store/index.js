@@ -31,7 +31,7 @@ export default new Vuex.Store({
             state.currentPage = data.page.current
         },
         filterNews: (state, data) => {
-            state.news = data.list
+            state.news = [...data.list]
             state.totalPage = data.page.total
             state.currentPage = data.page.current
         }
