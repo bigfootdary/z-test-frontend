@@ -1,3 +1,40 @@
-<div>
-    list
+<div class="list">
+    <div class="list__input">
+        <Input 
+            type="search" 
+            id="search" 
+            value="value" 
+            @onFocus="getDataFromStore('https://my-json-server.typicode.com/bigfootdary/json-news/news-filtered', true, false)"
+            @onChange="searchCards" 
+            @onBlur="getDataFromStore('https://my-json-server.typicode.com/bigfootdary/json-news/news', true, true)"
+            placeholder="Поиск" 
+            icon
+        />
+    </div>
+    <div class="list__cards" v-if="cards.length !== 0">
+        <Card
+            v-for="card in searchHandler" 
+            :key="card.id"
+            :date="card.date"
+            :id="card.id"
+            :themes="card.theme"
+            :spotlight="card.spotlight"
+            :title="card.title"
+            :image="card.image"
+            :url="card.url"
+        />        
+    </div>
+    <div class="list__cards" v-else>
+        <h3 class="list__cards--silence">Новости отсутствуют...</h3>
+    </div>
+    <div class="list__buttonLoaded" v-if="cards.length !== 0">
+        <Button 
+            type="button" 
+            name="loadCards" 
+            :isShow="onShow" 
+            className="list__button" 
+            title="Загрузить ещё" 
+            @click.native="getDataFromStore('https://my-json-server.typicode.com/bigfootdary/json-news/news-last-page', false, false)"
+        />
+    </div>
 </div>

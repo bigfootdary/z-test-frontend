@@ -1,0 +1,13 @@
+.sheme {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.5s;
+}
+.modal-enter,
+.modal-leave-to {
+  opacity: 0;
+}

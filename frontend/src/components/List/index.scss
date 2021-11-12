@@ -1,0 +1,37 @@
+.list {
+  width: 100%;
+
+  &__input {
+    margin-bottom: 1rem;
+  }
+
+  &__cards {
+    width: 100%;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: start;
+    align-items: stretch;
+    margin-top: 2.6rem;
+    margin-bottom: -4px;
+  }
+
+  &__button {
+    width: 180px;
+    height: 38px;
+    background: linear-gradient(253.21deg, #3BCDFB 38.41%, #D728F4 78.33%), #C4C4C4;
+    mix-blend-mode: normal;
+    font: 700 16px/19px Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+  }
+
+  @media (max-width: 960px) {
+    &__cards {  
+      justify-content: space-between;
+    }
+  }
+}
