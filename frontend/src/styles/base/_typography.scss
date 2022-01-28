@@ -1,4 +1,23 @@
 // @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i&subset=cyrillic-ext,latin-ext');
+@font-face {
+    font-family: 'Roboto';
+    src: url('/local/templates/z-template/static/fonts/Roboto/Roboto-Regular.eot');
+    src: url('/local/templates/z-template/static/fonts/Roboto/Roboto-Regular.eot?#iefix') format('embedded-opentype'),
+         url('/local/templates/z-template/static/fonts/Roboto/Roboto-Regular.woff') format('woff'),
+         url('/local/templates/z-template/static/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('/local/templates/z-template/static/fonts/Roboto/Roboto-Bold.eot');
+    src: url('/local/templates/z-template/static/fonts/Roboto/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
+         url('/local/templates/z-template/static/fonts/Roboto/Roboto-Bold.woff') format('woff'),
+         url('/local/templates/z-template/static/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
 
 @font-face {
 	font-family: 'FranklinGothic';
@@ -50,7 +69,7 @@ html {
 
 %text--body,
 .text--body {
-	font-family: 'Humanist531CBT', Helvetica, sans-serif;
+	font-family: 'Roboto', Helvetica, sans-serif;
 	font-weight: 400;
 	font-style: normal;
 	@include font-size($base-font-size);
@@ -77,8 +96,8 @@ ul ul, ol ol, ul ol, ol ul {
 
 h1, h2, h3, h4, h5, h6 {
 	// @include rem(margin-bottom, $base-font-size/2);
-	font-family: 'FranklinGothic', Helvetica, sans-serif;
-	font-weight: 500;
+	font-family: 'Roboto', Helvetica, sans-serif;
+	font-weight: 400;
 	line-height: normal;
 	color: inherit;
 	margin-top: 1.5rem;
@@ -87,6 +106,7 @@ h1, h2, h3, h4, h5, h6 {
 .header-1 {
 	@include font-size(48px);
 	margin-bottom: 3rem;
+	line-height: 1em;
 }
 h1 {
 	@extend .header-1;
@@ -151,7 +171,7 @@ pre.xdebug-var-dump {
 .page__title > h1 {
 	color: #fff;
 	text-transform: uppercase;
-	margin-bottom: 1.8rem;
+	margin-bottom: 2.1rem;
 	margin-top: 0;
 }
 
@@ -182,9 +202,15 @@ pre.xdebug-var-dump {
 	.header-1 {
 		@include font-size(34px);
 		line-height: 42px;
+
 	}
 	
 	.header-3 {
 		@include font-size(18px);
+	}
+
+	.page__title > h1 {
+		font-size: 1.7rem;
+		line-height: 31px;
 	}
 }

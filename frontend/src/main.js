@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import store from './store/'
+import LayoutDefault from './layouts/Default'
 
 import '@/utils/filter' // global
 import { getLang } from '@/utils/i18n'
@@ -15,6 +16,7 @@ import Scheme from '@/components/Scheme'
 
 Vue.component('list', List)
 Vue.component('scheme', Scheme)
+Vue.component('layout-default', LayoutDefault)
 
 // https://webpack.js.org/guides/dependency-management/#require-context
 const requireComponent = require.context(

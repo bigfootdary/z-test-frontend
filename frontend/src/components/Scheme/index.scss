@@ -1,0 +1,48 @@
+.scheme {
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0px;
+    text-align: center;
+    &__item {
+        &--active {
+            //transform: scale(1.5);
+            .scheme__hover-point {
+                width: 15px;
+                height: 15px;
+            }
+        }
+    }
+    &__title,
+    &__content {
+        font-family: Roboto;
+        fill: #231F20;
+    }
+    &__title {
+        font-size: 18px;
+        line-height: 21px;
+        &--small {
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+    }
+    &__content {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: left;
+        white-space: normal;
+    }
+    &__text {
+        font-size: 16px;
+        line-height: 24px;
+        text-align: left;
+    }
+    &__hover-point {
+        cursor: pointer;
+    }
+}

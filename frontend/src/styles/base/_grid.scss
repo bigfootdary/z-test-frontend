@@ -290,7 +290,7 @@ $gutter-compensation: -1 * $half-gutter-width;
 
 .content {
 	.row {
-		margin-top: -1.875rem;
+		margin-left: -1.5rem;
 
 		+ * {
 			margin-top: 1.875rem;
@@ -301,7 +301,8 @@ $gutter-compensation: -1 * $half-gutter-width;
 		}
 
 		> [class^="col"] {
-			margin-top: 1.875rem;
+			margin-top: 1.5rem;
+			margin-left: 1.5rem;
 		}
 
 		&--full-height {
@@ -338,7 +339,9 @@ $gutter-compensation: -1 * $half-gutter-width;
 @include breakpoint(mobile) {
 	.content {
 		.row {
-			margin-top: -1rem;
+			// margin-top: -1rem;
+			margin-left: unset;
+			margin-right: unset;
 
 			+ * {
 				margin-top: 1rem;
@@ -349,7 +352,9 @@ $gutter-compensation: -1 * $half-gutter-width;
 			}
 	
 			> [class^="col"] {
-				margin-top: 1rem;
+				width: 100%;
+				margin-top: 1.429rem;
+				margin-left: unset;
 			}
 	
 			&--full-height {

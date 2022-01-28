@@ -1,0 +1,11 @@
+.list {
+    &__controls {
+        padding: 10px 0;
+    }
+    @include breakpoint(mobile) {
+        padding-bottom: 38px;
+        &__more {
+            margin-top: 5px;
+        }
+    }
+}
