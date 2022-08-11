@@ -22,13 +22,12 @@ export default {
             type: Object
         }
     },
-    setup(props) {
+    setup (props) {
         const theme = props.news.theme[0]
         const background = require('@/assets/img/background.png')
         return {
             theme, background
         }
-    },
+    }
 }
 </script>
-

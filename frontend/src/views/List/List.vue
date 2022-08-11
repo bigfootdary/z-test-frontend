@@ -15,7 +15,7 @@ export default {
         NewsCard
     },
     name: 'list',
-    setup() {
+    setup () {
         const page = ref(1)
         const total = ref()
         const newsList = ref()
@@ -38,12 +38,12 @@ export default {
             }).catch(handleError)
         }
 
-        DataService.getNews(page.value).then((res)=> {
-                newsList.value = res.items
-                console.log(res)
-                total.value = res.nav.total
-                loadBtn.value = true
-            }).catch(handleError)
+        DataService.getNews(page.value).then((res) => {
+            newsList.value = res.items
+            console.log(res)
+            total.value = res.nav.total
+            loadBtn.value = true
+        }).catch(handleError)
 
         return {
             newsList, loadMoreNews, loadBtn, error
@@ -52,4 +52,3 @@ export default {
 
 }
 </script>
-

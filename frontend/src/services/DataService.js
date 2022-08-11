@@ -1,10 +1,9 @@
-import { axios } from "../utils/request"
-
-const api_url = '/api/news'
+import { axios } from '../utils/request'
 
 class DataService {
     async getNews(page) {
-        return await axios.get(`/news/${page}`)
+        const news = await axios.get(`/news/${page}`)
+        return news
     }
 }
 
