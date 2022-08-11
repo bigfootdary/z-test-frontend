@@ -6,6 +6,6 @@ const LANG = App.page.lang
 moment.locale(`${LANG}`)
 
 // for example
-Vue.filter('momentFilter', function (dataStr, pattern = 'YYYY-MM-DD HH:mm:ss') {
+Vue.filter('momentFilter', function(dataStr, pattern = 'YYYY-MM-DD') {
     return moment.unix(dataStr).format(pattern)
 })
