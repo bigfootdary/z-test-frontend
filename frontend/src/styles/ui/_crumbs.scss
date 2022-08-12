@@ -1,4 +1,5 @@
 .breadcrumbs {
+    display: none;
     &__list {
         margin-bottom: 0.9rem;
         display: flex;
@@ -32,5 +33,11 @@
                 font-size: 0.875rem;
             }
         }
+    }
+}
+
+@media (min-width: 1440px) {
+    .breadcrumbs {
+        display: block;
     }
 }

@@ -1,0 +1,112 @@
+.announcement {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    border-bottom: 1px solid #D9D9D6;
+
+    &__spotlight-title {
+        display: none;
+    }
+
+    &__date {
+        align-self: flex-start;
+        display: block;
+        padding: 4px 8px 2px 8px;
+        background-color: #97999B;
+        border-radius: 2px;
+        font-family: 'Roboto', Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 12px;
+        color: #FFFFFF;
+        margin-bottom: 4px;
+    }
+
+    &__text {
+        @extend %text--body;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 15px;
+        height: 100%;
+        flex-grow: 1;
+    }
+
+    &__theme {
+        align-self: flex-start;
+        padding: 4px 5px 2px 6px;
+        font-family: 'Roboto', Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 14px;
+        color: #97999B;
+        border-radius: 2px;
+        border: 1px solid #D9D9D6;
+    }
+}
+
+@media (min-width: 1440px) {
+    .announcement {
+        width: 100%;
+        max-width: 412px;
+        background-color: #F8F8F8;
+        padding: 24px;
+        border-bottom: none;
+        margin-bottom: 24px;
+
+        &__spotlight-title {
+            align-self: flex-start;
+            margin-top: 74px;
+            display: block;
+            height: 100%;
+            flex-grow: 2;
+            padding: 4px 5px 2px 6px;
+            border-radius: 2px;
+            border: 1px solid #FFFFFF;
+            font-family: 'Roboto', Helvetica, sans-serif;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 14px;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        &--spotlight {
+            grid-column: span 2;
+            -ms-grid-column-span: 2;
+            max-width: 848px;
+            background-color: #3C606B;
+            background-image: url("../img/zebra.jpg");
+            background-size: cover;
+            background-position: center;
+            object-fit: cover;
+            background-repeat: no-repeat;
+        }
+
+        &__date {
+            font-size: 12px;
+            line-height: 14px;
+        }
+
+        &__text {
+            font-size: 24px;
+            line-height: 28px;
+            &--spotlight {
+                font-size: 32px;
+                line-height: 41px;
+                color: #FFFFFF;
+                text-transform: uppercase;
+                margin-bottom: 0;
+                max-width: 643px;
+            }
+        }
+
+        &__theme {
+            font-size: 12px;
+            line-height: 14px;
+        }
+    }
+}

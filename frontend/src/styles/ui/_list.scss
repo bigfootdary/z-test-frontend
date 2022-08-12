@@ -1,0 +1,8 @@
+
+@media (min-width: 1440px) {
+    .list {
+        display: grid;
+        -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
