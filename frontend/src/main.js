@@ -14,17 +14,17 @@ import List from '@/views/List'
 Vue.component('list', List)
 
 // https://webpack.js.org/guides/dependency-management/#require-context
-const requireComponent = require.context(
-    './components',
-    true,
-    /Z[\w-]+\/index\.js$/
-)
+// const requireComponent = require.context(
+//     './components',
+//     true,
+//     /Z[\w-]+\/index\.js$/
+// )
 
-requireComponent.keys().forEach(fileName => {
-    const componentConfig = requireComponent(fileName)
-    const componentName = fileName.split('/')[1]
-    Vue.component(componentName, componentConfig.default || componentConfig)
-})
+// requireComponent.keys().forEach(fileName => {
+//     const componentConfig = requireComponent(fileName)
+//     const componentName = fileName.split('/')[1]
+//     Vue.component(componentName, componentConfig.default || componentConfig)
+// })
 
 window.onerror = function (msg, url, lineNo, columnNo, error) {
     showNotyfications(`${msg}<br>${url}#${lineNo}`, {
