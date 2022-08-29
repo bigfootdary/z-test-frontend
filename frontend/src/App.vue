@@ -4,7 +4,11 @@ import 'vue-svgicon/dist/polyfill'
 
 /*
  * Components
+
 */
+
+import List from '@/views/List'
+
 import '@/styles/app.scss'
 
 Vue.directive('click-outside', {
@@ -50,7 +54,7 @@ Vue.component('vue-raw', {
 export default {
     name: 'App',
     components: {
-
+        List
     }
 }
 </script>
