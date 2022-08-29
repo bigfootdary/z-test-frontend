@@ -109,5 +109,11 @@ export default {
       justify-content: space-between;
     }
   }
+
+  @media (max-width: 535px) {
+    &__buttonLoaded {
+        margin-top: 25px;
+    }
+  }
 }
 </style>
