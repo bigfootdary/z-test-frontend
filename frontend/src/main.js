@@ -90,6 +90,6 @@ new Vue({
         app: window.App
     },
     components: {
-        App
+        App, List
     }
 })

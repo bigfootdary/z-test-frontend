@@ -1,0 +1,16 @@
+<div :class="[themes.length === 0 ? 'card card__withoutTheme' : 'card', spotlight && !isMobile ? 'card card__full' : 'card']" :style="spotlight && !isMobile ? spotlightStyle : null">
+    <div class="card__date">
+        {{date}}
+    </div>
+    <div v-if="spotlight && !isMobile" class="card__warning">
+        в центре внимания
+    </div>
+    <div :class="spotlight && !isMobile ? 'card__warningTitle' : 'card__title'">
+        {{title}}
+    </div>
+    <div class="card__themes" v-if="Array.isArray(themes)">
+        <div class="card__theme" v-for="(item, i) in themes" :key="i">
+            {{item}}
+        </div>
+    </div>
+</div>

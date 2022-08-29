@@ -1,0 +1,5 @@
+<div class="button" v-if="isShow">
+    <button :type="type" :name="name" :disabled="isDisabled" :class="!!className ? `${className} button__el` : 'button__el'">
+    {{title}}
+    </button>
+</div>
