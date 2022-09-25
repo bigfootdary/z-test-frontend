@@ -11,11 +11,6 @@
     "prod": "cross-env NODE_ENV=production node frontend/build/build.js",
     "update-packages": "yarn upgrade-interactive --latest"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint"
-    }
-  },
   "dependencies": {
     "axios": "^0.19.2",
     "cross-env": "6",
