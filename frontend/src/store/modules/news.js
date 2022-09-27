@@ -23,7 +23,7 @@ export default {
     .then((posts) => {
       commit("updatePosts", posts);
     })
-    .catch((err) => console.error(err));      
+    .catch((err) => console.log(err));      
    },
    async getNextPage({ commit, getters }) {
     const res = await fetch (

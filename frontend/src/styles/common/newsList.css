@@ -65,7 +65,6 @@
 
 .spotlight {
   width: 66%;
-  background-image: url(../../imgs/Zebra.png) center/cover no-repeat;
 }
 
 .spotlight .news .news-date .date {
@@ -94,7 +93,7 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .news-list .load .load-button {
+  .load .load-button {
     width: 20%;
   }
 }
@@ -103,7 +102,7 @@
   .news-list {
     flex-direction: column;
   }
-  .news-list .load .load-button {
+  .load .load-button {
     width: 100%;
   }
   .news-card {
@@ -112,18 +111,18 @@
     margin-bottom: 0;
     border-bottom: 1px solid #D9D9D6;
   }
-  .news-card .news .news-date .date {
+  .news-card .news-date .date {
     padding: 4px 8px 2px 8px;
     font-size: 10px;
     line-height: 12px;
     margin-top: 20px;
     margin-bottom: 4px;
   }
-  .news-card .news .title {
+  .news-card .title {
     font-size: 16px;
     line-height: 20px;
   }
-  .news-card .theme .theme-title {
+  .news-card .theme-title {
     margin-top: 15px;
     padding: 4px 5px 2px 6px;
   }

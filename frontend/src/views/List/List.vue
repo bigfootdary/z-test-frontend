@@ -20,7 +20,7 @@
         </div>
     </template>
 
-    <script>
+    <script> 
     import { mapGetters, mapActions } from 'vuex'
     export default {
         name: "app",
@@ -33,4 +33,9 @@
     </script>
     
     <style scoped>
+        .spotlight {
+            background-image: url(../../imgs/Zebra.png);
+            background-position: center;
+            background-repeat: no-repeat;
+        }
     </style>
