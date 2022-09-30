@@ -10,6 +10,8 @@ import { showNotyfications } from '@/utils/notifications'
 import { VueAxios } from '@/utils/request'
 
 import List from '@/views/List'
+//import http from './utils/http-service'
+
 
 Vue.component('list', List)
 
@@ -79,6 +81,7 @@ Object.defineProperty(Vue.prototype, '$bus', {
 Vue.config.productionTip = false
 
 Vue.use(VueAxios)
+//Vue.use(http)
 
 /* eslint-disable no-new */
 new Vue({
