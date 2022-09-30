@@ -1,7 +1,5 @@
 <template>
-    <div>
-        Тут будет список
-    </div>
+    <div>Тут будет список</div>
 </template>
 
 <script>
@@ -10,5 +8,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
