@@ -1,6 +1,6 @@
 <template>
     <div>
-        list
+        Тут будет список
     </div>
 </template>
 
