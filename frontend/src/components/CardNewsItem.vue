@@ -1,6 +1,6 @@
 <template>
     <div class="card-news" :class="{'card-news--spotlight': spotlight}" :style="mainNewsStyles">
-        <div class="card-news__tag-date">
+        <div class="card-news__tag-date" :class="{'card-news__tag-date--spotlight': spotlight}">
             <span class="card-news__tag-date-value">{{ date | momentFilter('MM.DD.YYYY') }}</span>
         </div>
 
@@ -9,7 +9,7 @@
                 <span class="card-news__tag-spotlight-value">В центре внимания</span>
             </div>
 
-            <h2 class="card-news__title">
+            <h2 class="card-news__title" :class="{'card-news__title--spotlight': spotlight}">
                 <a :href="url" class="card-news__link" :class="{'card-news__link--spotlight': spotlight}">{{ title }}</a>
             </h2>
         </div>
@@ -48,7 +48,7 @@ export default {
             default: false
         },
         themes: {
-            type: Array || String,
+            type: Array,
             default: () => ([])
         },
         title: {
@@ -71,7 +71,7 @@ export default {
             return {}
         },
         hasThemes () {
-            return (!this.spotlight && Array.isArray(this.themes) && this.themes.length > 0)
+            return (!this.spotlight && this.themes.length > 0)
         }
     }
 }
@@ -100,6 +100,7 @@ export default {
         width: 66%;
         padding-top: 32px;
         border: 1px solid $black;
+        background: linear-gradient(360deg, #414141 0%, rgba(59, 205, 251, 0) 100%);
         backdrop-filter: blur(50px);
         background-position: 50% 50%;
         background-repeat: no-repeat;
@@ -121,6 +122,10 @@ export default {
         background-color: $oslo-gray;
         padding: 8px;
         border-radius: 2px;
+
+        &--spotlight {
+            background-color: rgba(151, 153, 155, 0.5);
+        }
     }
 
     &__tag-spotlight {
@@ -149,6 +154,10 @@ export default {
         margin: 0;
         margin-top: auto;
         margin-bottom: 24px;
+
+        &--spotlight {
+            margin-bottom: 0;
+        }
     }
 
     &__link {

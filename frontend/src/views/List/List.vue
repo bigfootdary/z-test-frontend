@@ -2,8 +2,11 @@
     <div class="page-news">
         <div class="page-news__wrap">
             <div class="page-news__list">
+                <div v-if="emptyNews" class="page-news__list-empty">
+                    <h2>Нет новостей</h2>
+                </div>
                 <CardNewsItem
-                    v-for="card of cardList"
+                    v-for="card of news"
                     :key="card.id"
                     :id="card.id"
                     :spotlight="card.spotlight"
@@ -14,12 +17,18 @@
                     :url="card.url" />
             </div>
 
-            <Button>Загрузить еще</Button>
+            <Button
+                v-if="!emptyNews"
+                :class="{'button--disabled' :isLoading}"
+                :disabled="isLoading"
+                @click.native="onLoadNextPage"
+            >Загрузить еще</Button>
         </div>
     </div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 import Button from '@/components/UI/Button.vue'
 import CardNewsItem from '@/components/CardNewsItem.vue'
 export default {
@@ -29,8 +38,29 @@ export default {
         CardNewsItem
     },
     data: () => ({
-        cardList: []
-    })
+        currentPage: 1
+    }),
+    mounted () {
+        this.fetchPage(this.currentPage)
+    },
+    computed: {
+        ...mapState('app', ['isLoading', 'news', 'newsNav']),
+        emptyNews () {
+            return !this.isLoading && this.news.length === 0
+        }
+    },
+    methods: {
+        ...mapActions('app', ['LoadNewsPage']),
+        fetchPage (page) {
+            this.LoadNewsPage(page)
+        },
+        onLoadNextPage () {
+            if (this.currentPage < this.newsNav.total) {
+                this.currentPage += 1
+                this.fetchPage(this.currentPage)
+            }
+        }
+    }
 }
 </script>
 
@@ -49,6 +79,13 @@ export default {
             justify-content: space-between;
 
             margin-bottom: 20px;
+        }
+        &__list-empty {
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 28px;
+            text-decoration: none;
+            color: $black;
         }
 
         @include breakpoint(mobile) {
