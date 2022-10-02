@@ -225,6 +225,12 @@ export default {
             }
         }
     }
+
+    @supports (gap: 24px) {
+        .news__card-spotlight {
+            max-width: calc(100% - 24px);
+        }
+    }
 }
 
 @media screen and (max-width: 768px) {
