@@ -1,136 +1,23 @@
 <template>
     <div class="container__news">
         <div class="container__news__wrapper news">
-            <div class="news__item item">
-                <img src="../../../../api/news/photo.jpg" alt="" />
+            <div class="news__item item" v-for="post in news.items" :key="post.id">
+                <!-- <a :href="post.url"> -->
+                <img v-show="post.image" :src="post.image" alt="" />
                 <div class="item__date date">
                     <div class="date__wrapper">
-                        <span>27.05.2018</span>
+                        <span>{{post.date | momentFilter}}</span>
                     </div>
                 </div>
-                <div class="item__title">
-                    Операционные результаты Зебры за 2-ой квартал 2018 года
-                </div>
+                <div class="item__title">{{post.title}}</div>
                 <div class="item__tag tag">
                     <div class="tag__wrapper">
-                        <span>В центре внимания</span>
+                        <span v-for="tag in post.theme">{{tag}}</span>
                     </div>
                 </div>
+            <!-- </a> -->
             </div>
-            <div class="news__item">
-                <div class="item__date date">
-                    <div class="date__wrapper">
-                        <span>27.05.2018</span>
-                    </div>
-                </div>
-                <div class="item__title">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Ducimus, repellat asperiores ab laboriosam molestias aperiam
-                    fugit consequuntur! Praesentium, libero ipsam.
-                </div>
-                <div class="item__tag tag">
-                    <div class="tag__wrapper">
-                        <span>Корпоративные новости</span>
-                    </div>
-                </div>
-            </div>
-            <div class="news__item">
-                <div class="item__date date">
-                    <div class="date__wrapper">
-                        <span>27.05.2018</span>
-                    </div>
-                </div>
-                <div class="item__title">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Voluptas, vero.
-                </div>
-                <div class="item__tag tag">
-                    <div class="tag__wrapper">
-                        <span>Корпоративные новости</span>
-                    </div>
-                </div>
-            </div>
-            <div class="news__item">
-                <div class="item__date date">
-                    <div class="date__wrapper">
-                        <span>27.05.2018</span>
-                    </div>
-                </div>
-                <div class="item__title">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Fugiat officiis fugit nulla voluptates veritatis nemo, eaque
-                    sint quod rerum, beatae similique fuga id vitae quia modi
-                    omnis molestiae dicta corrupti!
-                </div>
-                <div class="item__tag tag">
-                    <div class="tag__wrapper">
-                        <span>Корпоративные новости</span>
-                    </div>
-                </div>
-            </div>
-            <div class="news__item">
-                <div class="item__date date">
-                    <div class="date__wrapper">
-                        <span>27.05.2018</span>
-                    </div>
-                </div>
-                <div class="item__title">
-                    Зебра объявляет об изменениях в составе Совета директоров
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quibusdam, atque.
-                </div>
-                <div class="item__tag tag">
-                    <div class="tag__wrapper">
-                        <span>Корпоративные новости</span>
-                    </div>
-                </div>
-            </div>
-            <div class="news__item">
-                <div class="item__date date">
-                    <div class="date__wrapper">
-                        <span>27.05.2018</span>
-                    </div>
-                </div>
-                <div class="item__title">
-                    Зебра объявляет об изменениях в составе Совета директоров
-                </div>
-                <div class="item__tag tag">
-                    <div class="tag__wrapper">
-                        <span>Корпоративные новости</span>
-                    </div>
-                </div>
-            </div>
-            <div class="news__item">
-                <div class="item__date date">
-                    <div class="date__wrapper">
-                        <span>27.05.2018</span>
-                    </div>
-                </div>
-                <div class="item__title">
-                    Зебра объявляет об изменениях в составе Совета директоров
-                </div>
-                <div class="item__tag tag">
-                    <div class="tag__wrapper">
-                        <span>Корпоративные новости</span>
-                    </div>
-                </div>
-            </div>
-            <div class="news__item">
-                <div class="item__date date">
-                    <div class="date__wrapper">
-                        <span>27.05.2018</span>
-                    </div>
-                </div>
-                <div class="item__title">
-                    Зебра объявляет об изменениях в составе Совета директоров
-                </div>
-                <div class="item__tag tag">
-                    <div class="tag__wrapper">
-                        <span>Корпоративные новости</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+         </div>
         <div class="news__button">
             <input
                 type="button"
@@ -143,7 +30,15 @@
 
 <script>
 export default {
-    name: 'list'
+    name: 'list',
+    data() {
+return {news:[]};
+    },
+    async mounted() {
+const response = await fetch('../../../../api/news/index.html');
+const news = await response.json();
+this.news = news;
+    }
 }
 </script>
 
@@ -167,6 +62,25 @@ export default {
     min-height: 254px;
     height: 100%;
     background-color: $alabaster;
+    overflow: hidden;
+    & img {
+    display:block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    // transition: 1s;
+}
+
+    &:hover {
+        cursor:pointer;
+    }
+//     &:hover & img {
+//     transform: scale(1.1);
+// }
     &:first-child {
         grid-column: 1 / 3;
         padding: 32px 24px 24px 24px;
@@ -208,15 +122,7 @@ export default {
         padding: 2px 8px;
     }
 }
-.item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
+
 .item__title {
     margin-top: 30px;
     margin-bottom: 46px;
