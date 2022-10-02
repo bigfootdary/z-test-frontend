@@ -7,7 +7,9 @@
              v-bind:key="item.id + index"
              v-bind:class="{ 'news__card-spotlight': item.spotlight }">
                 <template v-if="item.spotlight">
-                    <div class="news__card-date">{{ item.date | moment }}</div>
+                    <div class="news__card-top">
+                        <div class="news__card-date">{{ item.date | moment }}</div>
+                    </div>
                     <div class="news__card-bottom">
                         <div class="news__card-subtitle" v-if="item.spotlight">В центре внимания</div>
                         <h3 class="news__card-title">{{ item.title }}</h3>
@@ -18,7 +20,9 @@
                         <div class="news__card-date">{{ item.date | moment }}</div>
                         <h3 class="news__card-title">{{ item.title }}</h3>
                     </div>
-                    <div class="news__card-theme" v-if="item.theme[0]">{{ item.theme[0] }}</div>
+                    <div class="news__card-bottom">
+                        <span class="news__card-theme" v-if="item.theme[0]">{{ item.theme[0] }}</span>
+                    </div>
                 </template>
             </div>
         </div>
@@ -84,17 +88,18 @@ export default {
 
 <style lang="scss" scoped>
 .news {
+    margin: 20px 0 20px;
     &__list {
         display: flex;
         flex-wrap: wrap;
-        gap: 24px;
-        margin: 0 0 20px;
     }
 
     &__card {
-        flex: 1 1 calc((100% / 3) - 16px);
-        max-width: calc((100% / 3) - 16px);
+        flex: 1 1 100%;
+        max-width: calc(100% / 3 - 25px);
         background: #F8F8F8;
+        margin-bottom: 24px;
+        margin-right: 24px;
         padding: 24px;
         display: flex;
         flex-direction: column;
@@ -115,19 +120,18 @@ export default {
         }
 
         &-theme {
-            box-sizing: border-box;
             border: 1px solid #D9D9D6;
             border-radius: 2px;
             font-weight: 700;
             font-size: 12px;
             color: #97999B;
-            width: fit-content;
             padding: 0 4px;
             height: 21px;
-            display: flex;
             align-items: center;
             justify-content: center;
             margin-top: 49px;
+            width: max-content;
+            display: inline-flex;
         }
 
         &-title {
@@ -147,17 +151,17 @@ export default {
             text-align: center;
             text-transform: uppercase;
             color: #FFFFFF;
-            width: fit-content;
             margin-bottom: 10px;
             height: 21px;
-            display: flex;
             align-items: center;
             justify-content: center;
+            width: max-content;
+            display: inline-flex;
         }
 
         &-spotlight {
-            flex: 1 1 calc((100% / 3) * 2 - 8px);
-            max-width: calc((100% / 3) * 2 - 8px);
+            flex: 1 1 100%;
+            max-width: calc(100% / 3 * 2 - 25px);
             background: linear-gradient(360deg, #414141 0%, rgba(59, 205, 251, 0) 100%), url("../../../static/spotlight.png") no-repeat center;
             background-size: cover;
             border: 1px solid #000000;
@@ -189,11 +193,31 @@ export default {
     }
 }
 
+@supports (gap: 24px) {
+    .news {
+        margin: 0;
+        &__list {
+            gap: 24px;
+            margin: 0 0 20px;
+        }
+        &__card {
+            max-width: calc(100% / 3 - 16px);
+            margin-bottom: 0;
+            margin-right: 0;
+
+            &-spotlight {
+                flex: 1 1 100%;
+                max-width: calc(100% / 3 * 2 - 8px);
+            }
+        }
+    }
+}
+
 @media screen and (max-width: 1020px) {
     .news {
         &__card {
-            flex: 1 1 calc((100% / 2) - 12px);
-            max-width: calc((100% / 2) - 12px);
+            flex: 1 1 calc(100% / 2 - 24px);
+            max-width: calc(100% / 2 - 24px);
 
             &-spotlight {
                 flex: 1 1 100%;
@@ -250,6 +274,10 @@ export default {
                 line-height: 20px;
                 text-transform: none;
             }
+        }
+
+        &__card:last-of-type {
+            margin-bottom: 0;
         }
 
         &__button {
