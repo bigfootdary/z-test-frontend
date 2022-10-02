@@ -1,8 +1,9 @@
 <template>
     <div class="container__news">
         <div class="container__news__wrapper news">
-            <div class="news__item item" v-for="post in news.items" :key="post.id">
-                <!-- <a :href="post.url"> -->
+            <div class="news__item" v-for="post in news.items" :key="post.id">
+                <a :href="post.url">
+                    <div class="item">
                 <img v-show="post.image" :src="post.image" alt="" />
                 <div class="item__date date">
                     <div class="date__wrapper">
@@ -12,10 +13,11 @@
                 <div class="item__title">{{post.title}}</div>
                 <div class="item__tag tag">
                     <div class="tag__wrapper">
-                        <span v-for="tag in post.theme">{{tag}}</span>
+                        <span v-for="tag in post.theme" :key="tag">{{tag}}</span>
                     </div>
                 </div>
-            <!-- </a> -->
+            </div>
+            </a>
             </div>
          </div>
         <div class="news__button">
@@ -31,13 +33,13 @@
 <script>
 export default {
     name: 'list',
-    data() {
-return {news:[]};
+    data () {
+        return {news: []}
     },
-    async mounted() {
-const response = await fetch('../../../../api/news/index.html');
-const news = await response.json();
-this.news = news;
+    async mounted () {
+        const response = await fetch('../../../../api/news/index.html')
+        const news = await response.json()
+        this.news = news
     }
 }
 </script>
@@ -53,7 +55,7 @@ this.news = news;
     justify-content: space-between;
     grid-template-columns: repeat(3, 1fr);
 }
-.news__item {
+.item {
     display: flex;
     position: relative;
     flex-direction: column;
@@ -81,8 +83,13 @@ this.news = news;
 //     &:hover & img {
 //     transform: scale(1.1);
 // }
-    &:first-child {
+    
+}
+.news__item {
+    & > a {text-decoration: none;}
+    &:first-child{
         grid-column: 1 / 3;
+        & a .item{
         padding: 32px 24px 24px 24px;
         background-color: transparent;
         & .item__title {
@@ -109,7 +116,7 @@ this.news = news;
             text-transform: uppercase;
         }
     }
-}
+}}
 .date__wrapper {
     display: inline-flex;
     justify-content: center;
