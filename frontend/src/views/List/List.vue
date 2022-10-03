@@ -1,7 +1,7 @@
 <template>
     <div class="container__news">
         <div class="container__news__wrapper news">
-            <div class="news__item" v-for="post in news.items" :key="post.id">
+            <div class="news__item" v-for="post in allNews.items" :key="post.id">
                 <a :href="post.url">
                     <div class="item">
                 <!-- <img v-show="post.image" :src="post.image" alt="" /> -->
@@ -32,15 +32,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
     name: 'list',
-    data () {
-        return {news: []}
-    },
+    computed: mapGetters(['allNews']),
     async mounted () {
-        const response = await fetch('../../../../api/news/index.html')
-        const news = await response.json()
-        this.news = news
+        this.$store.dispatch('fetchNews')
     }
 }
 </script>
