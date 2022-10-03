@@ -63,7 +63,7 @@ export default {
     min-height: 254px;
     height: 100%;
     background-color: $alabaster;
-    overflow: hidden;   
+    overflow: hidden;
     &:hover {
         cursor:pointer;
     }
@@ -196,7 +196,7 @@ export default {
             line-height: $kilo-third * 1.25;
             color: $black;
             text-transform: none;
-        }        
+        }
         & .item__tag {
             order: 3;
             margin-top: auto;
@@ -221,5 +221,22 @@ export default {
     margin-top: 25px;
 }
 .button--more-news {width:100%}
+h1 {
+    font-size: $gamma-size;
+    font-weight: 400;
+    line-height: $gamma-size * 1.292;
+}
+.copyright {
+    font-weight: 400;
+    font-size: $milli-size;
+    line-height: $milli-size * 1.182;
+    flex-basis: 50%;
+    justify-self: flex-end;
+}
+.footer__social {
+    flex-basis: 50%;
+    justify-self: flex-start;
+}
+
     }
 </style>
