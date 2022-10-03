@@ -26,6 +26,7 @@ cache
 .sass-cache
 yarn.lock
 node_modules
+package-lock.json
 
 # backend
 /src/vendor
