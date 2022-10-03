@@ -1,10 +1,10 @@
 <template>
-    <div class="container__news">
+    <div>
+    <div v-if="'items' in allNews"  class="container__news">
         <div class="container__news__wrapper news">
             <div class="news__item" v-for="post in allNews.items" :key="post.id">
                 <a :href="post.url">
                     <div class="item">
-                <!-- <img v-show="post.image" :src="post.image" alt="" /> -->
                 <div class="item__img" :style="{backgroundImage: 'url(' + post.image + ')'}"></div>
                 <div class="item__date date">
                     <div class="date__wrapper">
@@ -29,6 +29,8 @@
             />
         </div>
     </div>
+    <div v-else>Ошибка, данные не получены.</div>
+</div>
 </template>
 
 <script>

@@ -16,10 +16,16 @@ const app = {
             commit('ToggleDevice', device)
         },
         async fetchNews (ctx) {
-            const response = await fetch('../../../../api/news/index.html')
-            const news = await response.json()
-            this.news = news
-            ctx.commit('updateNews', news)
+            // const response = await fetch('../../../../api/news/index.html')
+            // const news = await response.json()
+            // this.news = news
+            // ctx.commit('updateNews', news)
+            try {
+                const response = await fetch('../../../../api/news/index.html')
+                const news = await response.json()
+                this.news = news
+                ctx.commit('updateNews', news)}
+            catch (err) { throw new Error(err)}
         }
     },
     getters: {
