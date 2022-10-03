@@ -32,12 +32,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
     name: 'list',
     computed: mapGetters(['allNews']),
+    methods: mapActions(['fetchNews']),
     async mounted () {
-        this.$store.dispatch('fetchNews')
+        this.fetchNews()
     }
 }
 </script>
