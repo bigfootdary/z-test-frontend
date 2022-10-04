@@ -1,8 +1,8 @@
 <template>
     <div>
-    <div v-if="'items' in allNews"  class="container__news">
+    <div v-if="allNews.length"  class="container__news">
         <div class="container__news__wrapper news">
-            <div class="news__item" v-for="post in allNews.items" :key="post.id">
+            <div class="news__item" v-for="post in allNews" :key="post.id">
                 <a :href="post.url">
                     <div class="item">
                 <div class="item__img" :style="{backgroundImage: 'url(' + post.image + ')'}"></div>
@@ -21,7 +21,7 @@
             </a>
             </div>
          </div>
-        <div class="news__button">
+        <div v-show="current < total" class="news__button" @click="getNext">
             <input
                 type="button"
                 class="button--more-news"
@@ -37,15 +37,15 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
     name: 'list',
-    computed: mapGetters(['allNews']),
-    methods: mapActions(['fetchNews']),
+    computed: mapGetters(['allNews', 'total', 'current']),
+    methods: mapActions(['fetchNews', 'getNext']),
     async mounted () {
         this.fetchNews()
     }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scope>
 .news__button {
     margin-top: 20px;
 }
