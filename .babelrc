@@ -7,12 +7,11 @@
                 "targets": {
                     "browsers": [
                         "> 1%",
-                        "last 4 versions",
-                        "ie > 9",
-                        "Opera > 30",
-                        "Firefox > 40.0",
-                        "Safari > 5.1.7",
-                        "Chrome > 43.0"
+                        "last 2 Chrome versions",
+                        "last 2 Firefox versions",
+                        "last 2 Opera versions",
+                        "last 2 Safari versions",
+                        "ie 11"
                     ]
                 }
             }
