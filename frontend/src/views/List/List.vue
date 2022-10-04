@@ -67,9 +67,6 @@ export default {
     &:hover {
         cursor:pointer;
     }
-//     &:hover & img {
-//     transform: scale(1.1);
-// }
 }
 .item__img {
     display:block;
@@ -226,17 +223,5 @@ h1 {
     font-weight: 400;
     line-height: $gamma-size * 1.292;
 }
-.copyright {
-    font-weight: 400;
-    font-size: $milli-size;
-    line-height: $milli-size * 1.182;
-    flex-basis: 50%;
-    justify-self: flex-end;
 }
-.footer__social {
-    flex-basis: 50%;
-    justify-self: flex-start;
-}
-
-    }
 </style>

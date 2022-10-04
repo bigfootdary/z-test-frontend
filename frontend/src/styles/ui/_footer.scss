@@ -81,3 +81,18 @@
 		}
 	}
 }
+// Мобильная версия //
+@media(max-width:$breakpoint-mobile) {
+.copyright {
+    font-weight: 400;
+    font-size: $milli-size;
+    line-height: $milli-size * 1.182;
+    flex-basis: 50%;
+    justify-self: flex-end;
+	text-align: right;
+}
+.footer__social {
+    flex-basis: 50%;
+    justify-self: flex-start;
+}
+}
