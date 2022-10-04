@@ -218,10 +218,5 @@ export default {
     margin-top: 25px;
 }
 .button--more-news {width:100%}
-h1 {
-    font-size: $gamma-size;
-    font-weight: 400;
-    line-height: $gamma-size * 1.292;
-}
 }
 </style>

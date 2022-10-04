@@ -80,5 +80,12 @@ $cursorProperty: default, crosshair, help, move, pointer, progress, text, wait,
 
 $list-marker-size: 5px;
 
+@media(max-width:$breakpoint-mobile) {
+h1 {
+    font-size: $gamma-size;
+    font-weight: 400;
+    line-height: $gamma-size * 1.292;
+}
+}
 
 
