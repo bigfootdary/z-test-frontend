@@ -50,12 +50,28 @@ export default {
     margin-top: 20px;
 }
 .news {
-    display: grid;
-    gap: $grid-margin;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap:wrap;
+    flex-basis: 100%;
+    // gap: $grid-margin;
+    &__item {
+    flex-basis:  calc((100% - 2 * 24px) / 3);
+    max-width:   calc((100% - 2 * 24px) / 3);
+    margin-right: $grid-margin;
+    &:nth-child(2) {
+        margin-right: 0;
+    }
+    &:nth-child(3n+2) {
+        margin-right: 0;
+    }
+    &:nth-child(n+2) {
+    margin-top: $grid-margin;
+    }
+    }
 }
 .item {
     display: flex;
+    box-sizing:border-box;
     position: relative;
     flex-direction: column;
     justify-content: flex-start;
@@ -77,12 +93,12 @@ export default {
     width: 100%;
     height: 100%;
     z-index: -1;
-    // transition: 1s;
 }
 .news__item {
     & > a {text-decoration: none;}
     &:first-child{
-        grid-column: 1 / 3;
+        flex-basis:  calc((100% - 2 * 24px) / 3* 2 + 24px);
+        max-width:   calc((100% - 2 * 24px) / 3 * 2 + 24px);
         & a .item{
         padding: 32px 24px 24px 24px;
         background-color: transparent;
@@ -154,10 +170,12 @@ export default {
     display:none;
 }
     .news {
-    display: grid;
-    gap: $grid-margin-mobile;
-    grid-template-rows: repeat(auto-fit, 1fr);
-    grid-template-columns: 1fr;
+    display:flex;
+    flex-direction: column;
+        &__item {
+    flex-basis: 100%;
+    max-width: 100%;
+        }
 }
 .item {
     padding: 0 0 23px 0;
@@ -212,7 +230,8 @@ export default {
         }
     }}
     .news__item:first-child {
-        grid-column: 1 / 2;
+    flex-basis: 100%;
+    max-width: 100%;
     }
     .news__button {
     margin-top: 25px;
