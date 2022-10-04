@@ -9,6 +9,9 @@ import { getLang } from '@/utils/i18n'
 import { showNotyfications } from '@/utils/notifications'
 import { VueAxios } from '@/utils/request'
 
+// Полифил для ie11
+import 'whatwg-fetch'
+
 import List from '@/views/List'
 
 Vue.component('list', List)
