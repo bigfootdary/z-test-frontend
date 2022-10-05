@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="item__title">{{post.title}}</div>
-                <div class="item__tag tag">
+                <div v-show="post.theme" class="item__tag tag">
                     <div class="tag__wrapper">
                         <span v-for="tag in post.theme" :key="tag">{{tag}}</span>
                     </div>
