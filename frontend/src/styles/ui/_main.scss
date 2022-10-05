@@ -154,10 +154,22 @@ body {
 .work--wide main,
 .work main,
 .subindex main {
-    padding-top: 2rem;
-    padding-bottom: 4rem;
+    //Fixed for IE11
+    // padding: 2rem 0 0 0;
+    // padding-bottom: 4rem;
 }
-
+// Fix for IE11
+.subindex main:after {
+    content:'';
+    display:block;
+    padding-bottom:4rem;
+  }
+  .subindex main:before {
+    content:'';
+    display:block;
+    padding-top:2rem;
+  }
+// Fix for IE11
 .work--wide main {
     overflow: hidden;
 }
