@@ -7,6 +7,9 @@ import 'vue-svgicon/dist/polyfill'
 */
 import '@/styles/app.scss'
 
+// import List from '@/views/List/List'
+// import NewsCard from './components/NewsCard'
+
 Vue.directive('click-outside', {
     bind: function (el, binding, vNode) {
         // Provided expression must evaluate to a function.
@@ -50,7 +53,8 @@ Vue.component('vue-raw', {
 export default {
     name: 'App',
     components: {
-
+        // List,
+        // NewsCard
     }
 }
 </script>
