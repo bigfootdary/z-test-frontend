@@ -52,11 +52,9 @@ export default {
 .news {
     display: flex;
     flex-wrap:wrap;
-    flex-basis: 100%;
-    // gap: $grid-margin;
     &__item {
-    flex-basis:  calc((100% - 2 * 24px) / 3);
-    max-width:   calc((100% - 2 * 24px) / 3);
+    flex-basis:  calc(33.33333% - 2 * 24px / 3);
+    max-width:   calc(33.33333% - 2 * 24px / 3);
     margin-right: $grid-margin;
     &:nth-child(2) {
         margin-right: 0;
@@ -64,7 +62,7 @@ export default {
     &:nth-child(3n+2) {
         margin-right: 0;
     }
-    &:nth-child(n+2) {
+    &:nth-child(n+3) {
     margin-top: $grid-margin;
     }
     }
@@ -171,14 +169,36 @@ export default {
 }
     .news {
     display:flex;
-    flex-direction: column;
         &__item {
+    position:relative;
     flex-basis: 100%;
     max-width: 100%;
+    padding: $grid-margin-mobile 0 23px 0;
+    margin:0;
+    &:nth-child(1) {
+        padding-top:0;
+    }
+    &:nth-child(2) {
+        margin-right: 0;
+    }
+    &:nth-child(3n+2) {
+        margin-right: 0;
+    }
+    &:nth-child(n+3) {
+    margin-top: 0;
+    }
+    &::after {
+            position:absolute;
+            content:'';
+            bottom:0;
+            left:0;
+            width:100%;
+            height:1px;
+            background-color:$quill-gray;
+        }
         }
 }
 .item {
-    padding: 0 0 23px 0;
     min-height: auto;
     background-color: transparent;
 }
@@ -192,18 +212,8 @@ export default {
 }
 .news__item,.news__item:first-child {
         & a .item{
-        position:relative;
-        padding: 0 0 21px 0;
-        &::after {
-            position:absolute;
-            content:'';
-            bottom:0;
-            left:0;
-            width:100%;
-            height:1px;
-            background-color:$quill-gray;
-        }
-        & .item__title {
+        padding: 0;
+    & .item__title {
             order: 2;
             margin: 2px 0 14px 0;
             font-weight: 400;
