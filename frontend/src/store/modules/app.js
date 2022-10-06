@@ -38,7 +38,7 @@ const app = {
                 commit('setCurrentPage', currentPage)
                 commit('setTotalPages', totalPages)
             } catch (e) {
-                commit('setNews', null)
+                throw new Error(e)
             }
         },
         async downloadNews ({commit}, page) {
@@ -46,8 +46,8 @@ const app = {
                 commit('setCurrentPage', page)
                 const response = await axios.get(`/news/${page}`)
                 commit('fetchNews', response.items)
-            } catch {
-                console.log('error download')
+            } catch (e) {
+                throw new Error(e)
             }
         }
     }

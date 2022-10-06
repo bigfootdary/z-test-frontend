@@ -1,7 +1,6 @@
 <template>
-    <div class="news">
-        <h2 v-if="noNews">Новостей нет:(</h2>
-        <div v-else class="news__list">
+    <div class="news-page">
+        <div v-if="!noNews" class="news-page__list">
             <news-card
                 v-for="item in news"
                 :key="item.id + Math.random()"
@@ -10,10 +9,11 @@
                 :date="item.date"
                 :url="item.url"
                 :title="item.title"
-                :theme="item.theme"
+                :theme="item.theme[0]"
             />
         </div>
         <my-button/>
+        <div v-if="noNews" class="news-page__empty">Новостей нет:(</div>
     </div>
 </template>
 
@@ -36,32 +36,31 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.news {
-    margin: 0 auto;
+@import '@/styles/base/_a-mixins.scss';
+.news-page {
+    margin: 0;
     &__list {
         display: flex;
         flex-wrap: wrap;
+        gap: 24px;
+        margin: 0 0 20px;
     }
-}
-@supports (gap: 24px) {
-    .news {
-        margin: 0;
+    &__empty {
+        font-weight: 400;
+        font-size: $gamma-size;
+        line-height: 28px;
+        text-decoration: none;
+        color: $black;
+    }
+    @include breakpoint(mobile) {
+        .news-page {
+            padding: 12px 16px 0;
+        }
         &__list {
-            gap: 24px;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
             margin: 0 0 20px;
-        }
-    }
-}
-@media screen and (max-width: 768px) {
-    .news {
-        &__list {
-            gap: 0;
-            margin: 0 0 25px;
-        }
-        &__button {
-            color: #FFFFFF;
-            width: 100%;
-            max-width: 290px;
         }
     }
 }

@@ -1,26 +1,25 @@
 <template>
     <div class="news__card"
          :class="{ 'news__card-spotlight': spotlight }">
-        <div v-if="spotlight">
+        <div>
             <div class="news__card-top">
-                <div class="news__card-date">{{ date | momentFilter('DD.MM.YYYY') }}</div>
+                <div class="news__card-date">
+                    {{ date | momentFilter('DD.MM.YYYY') }}
+                </div>
+                <div v-if="!spotlight">
+                    <h3 class="news__card-title">
+                        <a :href="url" target="_blank">{{ title }}</a>
+                    </h3>
+                </div>
             </div>
             <div class="news__card-bottom">
-                <div class="news__card-subtitle">В центре внимания</div>
-                <h3 class="news__card-title__spotlight">
-                    <a :href="url" target="_blank">{{ title }}</a>
-                </h3>
-            </div>
-        </div>
-        <div v-else>
-            <div class="news__card-top">
-                <div class="news__card-date">{{ date | momentFilter('DD.MM.YYYY') }}</div>
-                <h3 class="news__card-title">
-                    <a :href="url" target="_blank">{{ title }}</a>
-                </h3>
-            </div>
-            <div class="news__card-bottom">
-                <span class="news__card-theme" v-if="theme[0]">{{ theme[0] }}</span>
+                <div v-if="spotlight"><div class="news__card-des">В центре внимания</div>
+                    <h3 class="news__card-title__spotlight">
+                        <a :href="url" target="_blank">{{ title }}</a>
+                    </h3></div>
+                <div v-else>
+                    <span class="news__card-theme" v-if="theme">{{ theme }}</span>
+                </div>
             </div>
         </div>
     </div>
@@ -59,160 +58,125 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/base/_a-mixins.scss';
 .news {
     &__card {
-        //flex: 1 1 100%;
-        max-width: calc(100% / 3 - 25px);
-        background: #F8F8F8;
-        margin-bottom: 24px;
-        margin-right: 24px;
-        padding: 24px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        max-width: calc(100% / 3 - 16px);
+        background: $alabaster;
+        margin-bottom: 0;
+        margin-right: 0;
+        padding: 24px;
         &-date {
-            width: 77px;
-            height: 21px;
-            background: #97999B;
-            border-radius: 2px;
-            font-weight: 700;
-            font-size: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #FFFFFF;
-            margin-bottom: 30px;
-        }
-        &-theme {
-            border: 1px solid #D9D9D6;
+            background: $oslo-gray;
+            color: $white;
+            width: 77px;
+            height: 21px;
             border-radius: 2px;
             font-weight: 700;
             font-size: 12px;
-            color: #97999B;
-            padding: 0 4px;
-            height: 21px;
-            align-items: center;
-            justify-content: center;
-            margin-top: 49px;
-            width: max-content;
+            margin-bottom: 30px;
+        }
+        &-theme {
             display: inline-flex;
+            padding: 0 4px;
+            margin-top: 49px;
+            color: $oslo-gray;
+            border: 1px solid $quill-gray;
+            border-radius: 2px;
+            font-weight: 700;
+            font-size: 12px;
         }
         &-title {
+            margin: 0;
+            color: $black;
             font-weight: 400;
             font-size: 24px;
-            line-height: 28px;
-            color: #000000;
-            margin: 0;
             a {
                 text-decoration: none;
-                color: #000000;
+                color: $black;
             }
             &__spotlight {
                 a {
                     text-decoration: none;
-                    color: #FFFFFF;
+                    color: $white;
                 }
             }
         }
-        &-subtitle {
-            border: 1px solid #FFFFFF;
-            border-radius: 2px;
+        &-des {
+            display: inline-flex;
+            height: 21px;
+            color: $white;
+            border: 1px solid $white;
             padding: 0 4px;
+            margin-bottom: 10px;
             font-weight: 700;
             font-size: 12px;
-            text-align: center;
             text-transform: uppercase;
-            color: #FFFFFF;
-            margin-bottom: 10px;
-            height: 21px;
-            align-items: center;
-            justify-content: center;
-            width: max-content;
-            display: inline-flex;
         }
         &-spotlight {
-            //flex: 1 1 100%;
-            max-width: calc(100% / 3 * 2 - 25px);
+            flex: 1 1 100%;
+            max-width: calc(100% / 3 * 2 - 8px);
             background: linear-gradient(360deg, #414141 0%, rgba(59, 205, 251, 0) 100%), url("../../static/spotlight.png") no-repeat center;
             background-size: cover;
-            border: 1px solid #000000;
+            border: 1px solid $black;
             backdrop-filter: blur(50px);
-            color: #FFFFFF;
+            color: $white;
         }
         &-spotlight &-title {
             font-weight: 400;
-            font-size: 32px;
-            line-height: 41px;
-            text-transform: uppercase;
-            color: #FFFFFF;
+            font-size: $default-font-size * 2;
+            color: $white;
         }
     }
 }
-@supports (gap: 24px) {
+@include breakpoint(tablet) {
     .news {
         &__card {
-            max-width: calc(100% / 3 - 16px);
-            margin-bottom: 0;
-            margin-right: 0;
-            &-spotlight {
-                flex: 1 1 100%;
-                max-width: calc(100% / 3 * 2 - 8px);
-            }
-        }
-    }
-}
-@media screen and (max-width: 1020px) {
-    .news {
-        &__card {
-            //flex: 1 1 calc(100% / 2 - 24px);
             max-width: calc(100% / 2 - 24px);
             &-spotlight {
-                //flex: 1 1 100%;
                 max-width: 100%;
             }
         }
     }
-    @supports (gap: 24px) {
-        .news__card-spotlight {
-            max-width: calc(100% - 24px);
-        }
-    }
 }
-@media screen and (max-width: 768px) {
+@include breakpoint(mobile) {
     .news {
         &__card {
-            background: #FFFFFF;
-            //flex: 1 1 100%;
+            background: $white;
             max-width: 100%;
-            border-bottom: 1px solid #D9D9D6;
+            border-bottom: 1px solid $quill-gray;
             padding: 20px 0;
             &-spotlight {
-                background: #FFFFFF;
                 border: none;
-                border-bottom: 1px solid #D9D9D6;
+                border-bottom: 1px solid $quill-gray;
             }
             &-title {
                 font-weight: 400;
-                font-size: 16px;
+                font-size: $default-font-size;
                 line-height: 20px;
-                color: #000000;
+                color: $black;
                 margin: 0;
                 a {
                     text-decoration: none;
-                    color: #000000;
+                    color: $black;
                 }
                 &__spotlight {
-                    font-size: 16px;
+                    font-size: $default-font-size;
                     font-weight: 400;
                     line-height: 20px;
                     margin: 0;
                     a {
                         text-decoration: none;
-                        color: #000000;
+                        color: $black;
                     }
                 }
             }
-            &-subtitle {
+            &-des {
                 display: none;
             }
             &-date {
@@ -226,14 +190,11 @@ export default {
                 margin-top: 15px;
             }
             &-spotlight &-title {
-                color: #000000;
-                font-size: 16px;
+                color: $black;
+                font-size: $default-font-size;
                 line-height: 20px;
                 text-transform: none;
             }
-        }
-        &__card:last-of-type {
-            margin-bottom: 0;
         }
     }
 }
