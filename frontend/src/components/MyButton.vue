@@ -9,7 +9,6 @@
 
 <script>
 import {mapActions, mapGetters} from 'vuex'
-
 export default {
     name: 'my-button',
     computed: mapGetters(['totalPages', 'currentPage', 'noNews']),
